@@ -1,0 +1,21 @@
+[
+  {
+    "id": "1764596676241",
+    "date": "2025-12-01T13:44:36.241Z",
+    "user": {
+      "name": "Nguyễn Cao Thắng",
+      "employeeId": "Thangnc",
+      "phoneNumber": "0914356119"
+    },
+    "seats": [
+      {
+        "id": "Premium-4",
+        "row": "Premium",
+        "col": 4,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ]
+  }
+]
