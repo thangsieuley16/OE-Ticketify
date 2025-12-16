@@ -10,7 +10,7 @@ export function AboutEvent() {
                     <div className="lg:col-span-4">
                         <div className="sticky top-24 flex items-center gap-6">
                             {/* Title with Left Border */}
-                            <h2 className="text-3xl md:text-5xl font-display font-bold uppercase tracking-tighter text-white border-l-4 border-cosmic-cyan pl-6">
+                            <h2 className="text-3xl md:text-5xl font-display font-bold uppercase tracking-wide text-white border-l-4 border-cosmic-cyan pl-6">
                                 Sự kiện
                             </h2>
                         </div>
@@ -19,12 +19,12 @@ export function AboutEvent() {
                     <div className="lg:col-span-8 space-y-12">
                         {/* Text Content with Drop Cap */}
                         <div className="prose prose-invert prose-lg max-w-none">
-                            <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-sans">
-                                <span className="float-left text-5xl md:text-6xl font-display font-bold text-cosmic-cyan mr-4 mt-[-8px] leading-none">C</span>
-                                hào mừng đến với <strong className="text-white">Owneverse</strong> — vũ trụ nơi giới hạn không tồn tại. Khép lại năm 2025 đầy bứt phá, Ownego trân trọng mời toàn thể chiến binh của đại gia đình cùng hội tụ tại đêm tiệc vinh danh hoành tráng nhất thập kỷ.
+                            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed font-sans">
+                                <span className="float-left text-7xl md:text-8xl font-display font-bold text-cosmic-cyan mr-4 leading-[0.8] pt-2">C</span>
+                                hào mừng đến với <strong className="text-white">Owniverse</strong> — vũ trụ nơi giới hạn không tồn tại. Khép lại năm 2025 đầy bứt phá, Ownego trân trọng mời toàn thể chiến binh của đại gia đình cùng hội tụ tại đêm tiệc vinh danh hoành tráng nhất thập kỷ.
                             </p>
-                            <p className="text-base md:text-lg text-gray-300 leading-relaxed mt-6 font-sans">
-                                Hành trình 2025 đã khép lại với những dấu ấn rực rỡ. Tại <strong className="text-cosmic-cyan">Owneverse</strong>, chúng ta không chỉ nhìn lại chặng đường đã qua mà còn cùng nhau khai mở những chân trời mới. Đây là thời khắc để tôn vinh sự cống hiến, nhiệt huyết và tinh thần đoàn kết của mỗi thành viên đại gia đình Ownego. Hãy sẵn sàng cho một đêm tiệc bùng nổ cảm xúc và đậm chất công nghệ!
+                            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mt-6 font-sans">
+                                Hành trình 2025 đã khép lại với những dấu ấn rực rỡ. Tại <strong className="text-cosmic-cyan">Owniverse</strong>, chúng ta không chỉ nhìn lại chặng đường đã qua mà còn cùng nhau khai mở những chân trời mới. Đây là thời khắc để tôn vinh sự cống hiến, nhiệt huyết và tinh thần đoàn kết của mỗi thành viên đại gia đình Ownego. Hãy sẵn sàng cho một đêm tiệc bùng nổ cảm xúc và đậm chất công nghệ!
                             </p>
                         </div>
 
@@ -37,7 +37,7 @@ export function AboutEvent() {
                                     <i className="fas fa-gamepad text-purple-400 text-2xl"></i>
                                 </div>
                                 <h3 className="text-xl font-bold text-purple-400 mb-2 font-display">Team-tertainment</h3>
-                                <p className="text-sm text-gray-300 font-sans">Tham gia các thử thách đồng đội cực &quot;cháy&quot; và rinh về những phần quà hấp dẫn.</p>
+                                <p className="text-lg text-gray-300 font-sans">Tham gia các thử thách đồng đội cực &quot;cháy&quot; và rinh về những phần quà hấp dẫn.</p>
                             </div>
 
                             {/* Card 2: Fine Dining (Pink) */}
@@ -45,8 +45,8 @@ export function AboutEvent() {
                                 <div className="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-400 shadow-[0_0_15px_rgba(236,72,153,0.1)] group-hover:bg-pink-500/20">
                                     <i className="fas fa-wine-glass text-pink-400 text-2xl"></i>
                                 </div>
-                                <h3 className="text-xl font-bold text-pink-400 mb-2 font-display">Fine Dining</h3>
-                                <p className="text-sm text-gray-300 font-sans">Thưởng thức tiệc tối sang trọng với thực đơn Á-Âu được tuyển chọn kỹ lưỡng.</p>
+                                <h3 className="text-xl font-bold text-pink-400 mb-2 font-display">Gala Dining</h3>
+                                <p className="text-lg text-gray-300 font-sans">Thưởng thức tiệc tối sang trọng với thực đơn Á-Âu được tuyển chọn kỹ lưỡng =)))</p>
                             </div>
 
                             {/* Card 3: Ownego Award (Yellow) */}
@@ -55,7 +55,7 @@ export function AboutEvent() {
                                     <i className="fas fa-trophy text-yellow-400 text-2xl"></i>
                                 </div>
                                 <h3 className="text-xl font-bold text-yellow-400 mb-2 font-display">Ownego Award</h3>
-                                <p className="text-sm text-gray-300 font-sans">Khoảnh khắc vinh danh những cá nhân và tập thể xuất sắc nhất năm 2025.</p>
+                                <p className="text-lg text-gray-300 font-sans">Khoảnh khắc vinh danh những cá nhân và tập thể xuất sắc nhất năm 2025.</p>
                             </div>
 
                             {/* Card 4: Music Fest (Cyan) */}
@@ -63,8 +63,8 @@ export function AboutEvent() {
                                 <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-rotate-2 transition-transform duration-400 shadow-[0_0_15px_rgba(6,182,212,0.1)] group-hover:bg-cyan-500/20">
                                     <i className="fas fa-music text-cyan-400 text-2xl"></i>
                                 </div>
-                                <h3 className="text-xl font-bold text-cyan-400 mb-2 font-display">Music Fest</h3>
-                                <p className="text-sm text-gray-300 font-sans">Quẩy hết mình cùng các &quot;nghệ sĩ khách mời&quot; trong không gian âm nhạc bùng nổ.</p>
+                                <h3 className="text-xl font-bold text-cyan-400 mb-2 font-display">Music Show</h3>
+                                <p className="text-lg text-gray-300 font-sans">Quẩy hết mình cùng các &quot;nghệ sĩ khách mời&quot; trong không gian âm nhạc bùng nổ.</p>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@ export function AboutEvent() {
                     <div className="lg:col-span-4">
                         <div className="sticky top-24 flex items-center gap-6">
                             {/* Title with Left Border */}
-                            <h2 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-tighter text-white border-l-4 border-cosmic-cyan pl-6">
+                            <h2 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-wide text-white border-l-4 border-cosmic-cyan pl-6">
                                 Địa điểm
                             </h2>
                         </div>
@@ -91,12 +91,12 @@ export function AboutEvent() {
                                 <div className="p-8 md:p-12 flex flex-col justify-center space-y-6 bg-gradient-to-br from-gray-900 to-black relative z-10">
                                     <div>
                                         <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 font-display">Melorita Villa Hòa Lạc</h3>
-                                        <p className="text-cosmic-cyan font-medium font-sans">Làng Châu Âu, Hòa Lạc, Hà Nội</p>
+                                        <p className="text-cosmic-cyan font-medium font-sans text-xl">Làng Châu Âu, Hòa Lạc, Hà Nội</p>
                                     </div>
 
                                     <div className="w-20 h-1 bg-white/20 rounded-full"></div>
 
-                                    <p className="text-gray-300 leading-relaxed font-sans">
+                                    <p className="text-gray-300 leading-relaxed font-sans text-xl">
                                         Đẳng cấp 4 sao tại Hòa Lạc, Hà Nội, có kiến trúc thiết kế lấy cảnh quan làm trọng tâm với 100% căn villa đều hòa mình vào thiên nhiên. Không gian thoáng đãng, sang trọng, hứa hẹn mang đến trải nghiệm nghỉ dưỡng và sự kiện tuyệt vời nhất.
                                     </p>
 
