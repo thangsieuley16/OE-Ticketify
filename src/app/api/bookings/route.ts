@@ -53,16 +53,20 @@ export async function POST(request: Request) {
         const inputRocket = user.employeeId.trim().toLowerCase();
         const inputPhone = user.phoneNumber.replace(/^'/, '').trim();
 
+        let targetRocketUsername = '';
+
         for (const line of dataRows) {
             const parts = line.split(',');
             if (parts.length >= 3) {
                 const csvName = parts[0].trim().toLowerCase();
-                const csvRocket = parts[1].trim().toLowerCase();
+                const csvRocketOriginal = parts[1].trim();
+                const csvRocket = csvRocketOriginal.toLowerCase();
                 const csvPhoneRaw = parts[2].trim();
                 const csvPhone = csvPhoneRaw.replace(/^'/, '').replace(/'$/, '');
 
                 if (csvName === inputName && csvRocket === inputRocket && csvPhone === inputPhone) {
                     isVerified = true;
+                    targetRocketUsername = csvRocketOriginal;
                     break;
                 }
             }
@@ -116,7 +120,7 @@ export async function POST(request: Request) {
 
             const isEarlyBird = hasStandardTicket && standardBookingsCount < 10;
 
-            const isChatSent = await sendChatNotification(inputRocket, seats.map((s: any) => s.id).join(', '), isEarlyBird);
+            const isChatSent = await sendChatNotification(targetRocketUsername, seats.map((s: any) => s.id).join(', '), isEarlyBird);
 
             // Update booking with chat status
             newBooking.chatStatus = isChatSent ? 'sent' : 'failed';
@@ -164,5 +168,34 @@ async function sendChatNotification(username: string, ticketId: string, isEarlyB
     } catch (error) {
         console.error('Error sending chat notification:', error);
         return false;
+    }
+}
+
+export async function DELETE(request: Request) {
+    try {
+        const body = await request.json();
+        const { password } = body;
+
+        const passwordPath = path.join(process.cwd(), 'src', 'thangnc.json');
+        if (!fs.existsSync(passwordPath)) {
+            return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
+        }
+
+        const passwordData = JSON.parse(fs.readFileSync(passwordPath, 'utf-8'));
+
+        if (password !== passwordData.password) {
+            return NextResponse.json({ error: 'Sai mật khẩu' }, { status: 403 });
+        }
+
+        // Use mutex to ensure safe deletion
+        await bookingMutex.runExclusive(async () => {
+            saveBookings([]);
+        });
+
+        return NextResponse.json({ success: true, message: 'Deleted all bookings' });
+
+    } catch (error) {
+        console.error("Delete error:", error);
+        return NextResponse.json({ error: 'Failed to delete bookings' }, { status: 500 });
     }
 }

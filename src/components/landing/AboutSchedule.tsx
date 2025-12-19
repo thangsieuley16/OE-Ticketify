@@ -6,7 +6,7 @@ const scheduleData = [
     { time: '14:45', title: 'Đổi vé checkin sự kiện', iconClass: 'fas fa-ticket-alt', color: 'yellow' },
     { time: '15:00 - 17:00', title: 'Team-tertaining', description: 'Games & team building', iconClass: 'fas fa-users', color: 'pink' },
     { time: '18:00', title: 'Gala "Owniverse"', iconClass: 'fas fa-star', color: 'red', highlight: true },
-    { time: '21:00', title: 'After party', description: "Founders' notes", iconClass: 'fas fa-glass-cheers', color: 'blue' },
+    { time: '21:00', title: 'Onw-night share', description: "Cocktail session & Founders' notes", iconClass: 'fas fa-glass-cheers', color: 'blue' },
 ];
 
 export function AboutSchedule() {
