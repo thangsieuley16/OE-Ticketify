@@ -29,6 +29,8 @@ export function BookingModal({ isOpen, onClose, isSoldOut }: BookingModalProps) 
     const [showQueue, setShowQueue] = useState(!isSoldOut);
     const [isVisible, setIsVisible] = useState(false);
     const [showLimitModal, setShowLimitModal] = useState(false);
+    const [showGreedyModal, setShowGreedyModal] = useState(false);
+    const [existingTicketId, setExistingTicketId] = useState('');
 
     const [refreshKey, setRefreshKey] = useState(0);
     const [successData, setSuccessData] = useState<{
@@ -177,10 +179,20 @@ export function BookingModal({ isOpen, onClose, isSoldOut }: BookingModalProps) 
                     message
                 });
 
+            } else if (response.status === 409) {
+                if (data.errorCode === 'GREEDY_USER' || data.ticketId) {
+                    setExistingTicketId(data.ticketId || 'UNKNOWN');
+                    setShowGreedyModal(true);
+                } else {
+                    setErrorData({
+                        title: "CHẬM TAY MẤT RỒI!",
+                        message: 'Ghế này có người khác đặt ồi =))) bạn vui lòng đặt ghế khác nhaaa'
+                    });
+                }
             } else {
                 setErrorData({
-                    title: "CHẬM TAY MẤT RỒI!",
-                    message: data.error || 'Ghế này vừa có người đặt xong.\nVui lòng chọn ghế khác nhé!'
+                    title: "CÓ LỖI XẢY RA",
+                    message: data.error || 'Có lỗi xảy ra, vui lòng thử lại.'
                 });
             }
         } catch (error) {
@@ -453,6 +465,33 @@ export function BookingModal({ isOpen, onClose, isSoldOut }: BookingModalProps) 
                             className="bg-cosmic-cyan hover:bg-cyan-400 text-black font-bold py-3 px-8 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.4)] text-lg"
                         >
                             Đã hiểu
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            {/* Greedy User Popup */}
+            {showGreedyModal && (
+                <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/90 backdrop-blur-md animate-in fade-in duration-200" onClick={(e) => e.stopPropagation()}>
+                    <div className="bg-black border border-white/10 rounded-3xl w-[400px] aspect-square shadow-[0_0_50px_rgba(6,182,212,0.2)] flex flex-col items-center justify-center text-center p-8 relative">
+                        <div className="w-32 h-32 mb-6">
+                            <img
+                                src="/images/mini_fig-removebg-preview.png"
+                                alt="Greedy"
+                                className="w-full h-full object-contain hover:scale-110 transition-transform duration-500"
+                            />
+                        </div>
+                        <h3 className="text-xl font-bold text-cyan-400 mb-2 uppercase tracking-wide">
+                            ĐỒ THAM LAM =)))
+                        </h3>
+                        <p className="text-stardust text-sm mb-6 px-6">
+                            Bạn chỉ được mua 1 vé thôi, bạn đã mua vé <span className="font-mono font-bold text-white">{existingTicketId}</span> rồi
+                        </p>
+                        <button
+                            onClick={() => setShowGreedyModal(false)}
+                            className="bg-cosmic-cyan hover:bg-cyan-400 text-black font-bold py-2 px-6 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.4)]"
+                        >
+                            Đã hiểu :))
                         </button>
                     </div>
                 </div>

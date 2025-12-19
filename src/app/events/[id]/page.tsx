@@ -23,27 +23,57 @@ export default function EventPage() {
     const [step, setStep] = useState<'select' | 'form'>('select');
     const [showLimitModal, setShowLimitModal] = useState(false);
 
+
+
     if (!event) return <div className="text-white text-center py-20">Event not found</div>;
 
     const handleConfirmSelection = () => {
         setStep('form');
     };
 
-    const handleBookingSubmit = (data: any) => {
-        console.log('Booking submitted:', { eventId: id, seats: selectedSeats, booker: data });
-        // Save to local storage for demo
-        localStorage.setItem('lastBooking', JSON.stringify({
-            event,
-            seats: selectedSeats,
-            booker: data,
-            date: new Date().toISOString()
-        }));
-        router.push('/confirmation');
+    const handleBookingSubmit = async (data: any) => {
+        try {
+            const response = await fetch('/api/bookings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    seats: selectedSeats,
+                    user: data
+                }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // Success
+                router.push('/confirmation');
+            } else if (response.status === 409) {
+                if (result.errorCode === 'GREEDY_USER') {
+                    setExistingTicketId(result.ticketId);
+                    setShowGreedyModal(true);
+                } else {
+                    setShowSlowModal(true);
+                }
+            } else {
+                alert(result.error || 'Booking failed');
+            }
+        } catch (error) {
+            console.error('Booking error:', error);
+            alert('Failed to submit booking');
+        }
     };
 
     const handleLimitReached = () => {
         setShowLimitModal(true);
     };
+
+    // Race Condition (Slow) Popup State
+    const [showSlowModal, setShowSlowModal] = useState(false);
+    // Greedy Popup State
+    const [showGreedyModal, setShowGreedyModal] = useState(false);
+    const [existingTicketId, setExistingTicketId] = useState('');
 
     return (
         <div className="space-y-8 relative">
@@ -109,6 +139,65 @@ export default function EventPage() {
                     </div>
                 </div>
             )}
+
+            {/* Slow/Race Condition Popup */}
+            {showSlowModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-in fade-in duration-200">
+                    <div className="bg-black border border-white/10 rounded-2xl w-[400px] aspect-square shadow-[0_0_50px_rgba(6,182,212,0.2)] flex flex-col items-center justify-center text-center relative">
+                        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-32 h-32">
+                            <img
+                                src="/images/cute_astronaut_limit.png"
+                                alt="Slow"
+                                className="w-full h-full object-contain hover:scale-110 transition-transform duration-500"
+                            />
+                        </div>
+                        <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-wide mt-8">
+                            CHẬM TAY MẤT RỒI!
+                        </h3>
+                        <p className="text-stardust text-sm mb-6 px-6">
+                            Ghế này có người khác đặt ồi =))) bạn vui lòng đặt ghế khác nhaaa
+                        </p>
+                        <button
+                            onClick={() => {
+                                setShowSlowModal(false);
+                                setStep('select');
+                                setSelectedSeats([]);
+                            }}
+                            className="bg-cosmic-cyan hover:bg-cyan-400 text-black font-bold py-2 px-6 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.4)]"
+                        >
+                            Đã hiểu
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            {/* Greedy User Popup */}
+            {showGreedyModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-in fade-in duration-200">
+                    <div className="bg-black border border-white/10 rounded-2xl w-[400px] aspect-square shadow-[0_0_50px_rgba(6,182,212,0.2)] flex flex-col items-center justify-center text-center relative">
+                        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-32 h-32">
+                            <img
+                                src="/images/mini_fig-removebg-preview.png"
+                                alt="Greedy"
+                                className="w-full h-full object-contain hover:scale-110 transition-transform duration-500"
+                            />
+                        </div>
+                        <h3 className="text-xl font-bold text-cyan-400 mb-2 uppercase tracking-wide mt-8">
+                            ĐỒ THAM LAM =)))
+                        </h3>
+                        <p className="text-stardust text-sm mb-6 px-6">
+                            Bạn chỉ được mua 1 vé thôi, bạn đã mua vé <span className="font-mono font-bold text-white">{existingTicketId}</span> rồi
+                        </p>
+                        <button
+                            onClick={() => setShowGreedyModal(false)}
+                            className="bg-cosmic-cyan hover:bg-cyan-400 text-black font-bold py-2 px-6 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.4)]"
+                        >
+                            Đã hiểu :))
+                        </button>
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 }

@@ -87,7 +87,16 @@ export async function POST(request: Request) {
             });
 
             if (alreadyBooked) {
-                response = NextResponse.json({ error: 'Ghế này có người khác đặt ồi =))) bạn vui lòng đặt ghế khác nhaaa' }, { status: 409 });
+                const existingBooking = currentBookings.find((b: any) => {
+                    const bookedRocket = b.user.employeeId.trim().toLowerCase();
+                    const bookedPhone = b.user.phoneNumber.replace(/^'/, '').trim();
+                    return bookedRocket === inputRocket || bookedPhone === inputPhone;
+                });
+
+                response = NextResponse.json({
+                    ticketId: existingBooking?.seats.map((s: any) => s.id).join(', '),
+                    errorCode: 'GREEDY_USER'
+                }, { status: 409 });
                 return;
             }
 
@@ -95,7 +104,7 @@ export async function POST(request: Request) {
             const hasConflict = seats.some((seat: any) => allOccupiedSeatIds.has(seat.id));
 
             if (hasConflict) {
-                response = NextResponse.json({ error: 'One or more seats are already booked' }, { status: 409 });
+                response = NextResponse.json({ error: 'Ghế này có người khác đặt ồi =))) bạn vui lòng đặt ghế khác nhaaa' }, { status: 409 });
                 return;
             }
 

@@ -29,6 +29,10 @@ export function BookerForm({ onSubmit, onCancel }: BookerFormProps) {
                 <label className="block text-sm text-gray-400 mb-1">Employee ID</label>
                 <Input name="employeeId" required placeholder="EMP123" />
             </div>
+            <div>
+                <label className="block text-sm text-gray-400 mb-1">Phone Number</label>
+                <Input name="phoneNumber" required placeholder="0912345678" />
+            </div>
 
             <div className="flex gap-4 pt-4">
                 <Button type="button" variant="secondary" onClick={onCancel} className="flex-1">
