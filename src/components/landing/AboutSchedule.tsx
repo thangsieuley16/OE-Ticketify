@@ -1,16 +1,12 @@
 import { motion } from 'framer-motion';
 
 const scheduleData = [
-    { time: '12:30', title: "Xe đón tại C'land", iconClass: 'fas fa-bus', color: 'cyan' },
-    { time: '14:00', title: 'Checkin khách sạn, nghỉ ngơi', iconClass: 'fas fa-hotel', color: 'purple' },
-    { time: '15:00', title: 'Chuỗi Pre-Event', description: 'Photo Booth & Game & Team Building', iconClass: 'fas fa-puzzle-piece', color: 'pink' },
-    { time: '17:00', title: 'Kết thúc chuỗi Pre-event', description: 'Hoạt động cá nhân', iconClass: 'fas fa-user-clock', color: 'gray' },
-    { time: '18:00', title: 'Main Event - Thảm đỏ - Check in', iconClass: 'fas fa-camera', color: 'red', highlight: true },
-    { time: '18:30', title: 'Gala Owniverse 2025 - Dining', iconClass: 'fas fa-utensils', color: 'purple' },
-    { time: '18:45', title: 'Lễ công bố OE Awards 2025 (Phần 1)', iconClass: 'fas fa-trophy', color: 'yellow' },
-    { time: '19:00', title: 'Quay số trúng thưởng', iconClass: 'fas fa-gift', color: 'pink' },
-    { time: '19:45', title: 'Phần trình diễn của các nghệ sĩ khách mời', iconClass: 'fas fa-microphone', color: 'cyan' },
-    { time: '20:15', title: 'Kết thúc chương trình. Quẩy tự do!!!', iconClass: 'fas fa-music', color: 'red' },
+    { time: '11:00', title: "Tập trung tại Cland & xuất phát", iconClass: 'fas fa-bus', color: 'cyan' },
+    { time: '13:30', title: 'Check in villa', iconClass: 'fas fa-hotel', color: 'purple' },
+    { time: '14:45', title: 'Đổi vé checkin sự kiện', iconClass: 'fas fa-ticket-alt', color: 'yellow' },
+    { time: '15:00 - 17:00', title: 'Team-tertaining', description: 'Games & team building', iconClass: 'fas fa-users', color: 'pink' },
+    { time: '18:00', title: 'Gala "Owniverse"', iconClass: 'fas fa-star', color: 'red', highlight: true },
+    { time: '21:00', title: 'After party', description: "Founders' notes", iconClass: 'fas fa-glass-cheers', color: 'blue' },
 ];
 
 export function AboutSchedule() {

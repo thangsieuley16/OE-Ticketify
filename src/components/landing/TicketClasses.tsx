@@ -1,11 +1,14 @@
 import { Button } from '@/components/ui/Button';
 
+
+
 interface TicketClassesProps {
     onBookTicket: () => void;
     isSoldOut: boolean;
+    isBookingOpen: boolean;
 }
 
-export function TicketClasses({ onBookTicket, isSoldOut }: TicketClassesProps) {
+export function TicketClasses({ onBookTicket, isSoldOut, isBookingOpen }: TicketClassesProps) {
     return (
         <section className="container mx-auto px-4 pt-32 pb-24 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -45,18 +48,18 @@ export function TicketClasses({ onBookTicket, isSoldOut }: TicketClassesProps) {
                         </div>
 
                         <div
-                            onClick={isSoldOut ? undefined : onBookTicket}
-                            className={`group relative glass-card rounded-2xl p-8 overflow-hidden transition-all duration-500 ${isSoldOut ? 'opacity-60 grayscale cursor-not-allowed hover:grayscale-0 hover:opacity-80' : 'cursor-pointer hover:border-cosmic-cyan hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:-translate-y-1'}`}
+                            onClick={isSoldOut || !isBookingOpen ? undefined : onBookTicket}
+                            className={`group relative glass-card rounded-2xl p-8 overflow-hidden transition-all duration-500 ${isSoldOut || !isBookingOpen ? 'opacity-60 grayscale cursor-not-allowed hover:grayscale-0 hover:opacity-80' : 'cursor-pointer hover:border-cosmic-cyan hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:-translate-y-1'}`}
                         >
-                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-cosmic-cyan group-hover:w-2 transition-all duration-300"></div>
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-cosmic-cyan"></div>
                             <div className="flex flex-col md:flex-row justify-between items-center gap-8">
                                 <div className="flex items-center gap-8">
-                                    <div className="w-24 h-24 rounded-full border-2 border-cosmic-cyan/30 bg-black/50 flex flex-col items-center justify-center text-cosmic-cyan relative overflow-hidden shadow-[0_0_20px_rgba(6,182,212,0.3)] group-hover:scale-110 transition-transform duration-500">
-                                        <div className="absolute inset-0 bg-cosmic-cyan/10 animate-pulse-slow"></div>
+                                    <div className="w-24 h-24 rounded-full border-2 border-cosmic-cyan/30 bg-black/50 flex flex-col items-center justify-center text-cosmic-cyan relative overflow-hidden shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+                                        <div className="absolute inset-0 bg-cosmic-cyan/10"></div>
                                         <span className="text-4xl">🪐</span>
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold text-white mb-2 font-display tracking-wide group-hover:text-cosmic-cyan transition-colors">Vé Nhà Du Hành</h3>
+                                        <h3 className="text-2xl font-bold text-white mb-2 font-display tracking-wide">Vé Nhà Du Hành</h3>
                                         <p className="text-stardust text-xl max-w-md font-sans">
                                             (Full experience) Tấm vé thông hành chính thức gia nhập Owniverse với đặc quyền tận hưởng trọn vẹn đêm gala.
                                         </p>
@@ -66,13 +69,15 @@ export function TicketClasses({ onBookTicket, isSoldOut }: TicketClassesProps) {
                                     <div className="text-3xl font-bold text-cosmic-cyan mb-2 flex items-center justify-end gap-2 text-shadow-glow">
                                         20 <span><img src="/images/banhmi.png" alt="Banhmi" className="w-8 h-auto inline-block filter drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" /></span>
                                     </div>
-                                    <div className={`flex items-center justify-end gap-2 ${isSoldOut ? '' : 'text-xs font-bold uppercase tracking-widest animate-pulse text-cosmic-cyan'}`}>
+                                    <div className={`flex items-center justify-end gap-2 ${isSoldOut || !isBookingOpen ? '' : 'text-xs font-bold uppercase tracking-widest animate-pulse text-cosmic-cyan'}`}>
                                         {isSoldOut ? (
                                             <div className="text-white font-bold text-xs uppercase tracking-widest border border-white/20 bg-white/5 px-3 py-1 rounded-full inline-block font-display">Sold Out</div>
                                         ) : (
                                             <>
-                                                <span className="w-2 h-2 rounded-full bg-cosmic-cyan inline-block"></span>
-                                                <span className="font-display">Đang mở bán</span>
+                                                <span className={`w-2 h-2 rounded-full bg-cosmic-cyan inline-block ${!isBookingOpen ? 'opacity-50' : ''}`}></span>
+                                                <span className={`font-display ${!isBookingOpen ? 'opacity-50' : ''}`}>
+                                                    {isBookingOpen ? 'Đang mở bán' : '14h30 - 29/12'}
+                                                </span>
                                             </>
                                         )}
                                     </div>

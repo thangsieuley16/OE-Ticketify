@@ -11,6 +11,20 @@ import { StardustBackground } from '@/components/ui/StardustBackground';
 export default function Home() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isSoldOut, setIsSoldOut] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+
+  useEffect(() => {
+    const checkTime = () => {
+      const targetTime = new Date('2025-12-29T14:30:00').getTime();
+      const now = new Date().getTime();
+      setIsBookingOpen(now >= targetTime);
+    };
+
+    checkTime(); // Check immediately
+    const interval = setInterval(checkTime, 1000); // Check every second
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const checkSoldOut = async () => {
@@ -48,10 +62,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black relative">
       <StardustBackground />
-      <Hero onBookTicket={openBooking} isSoldOut={isSoldOut} />
+      <Hero onBookTicket={openBooking} isSoldOut={isSoldOut} isBookingOpen={isBookingOpen} />
       <AboutEvent />
       <AboutSchedule />
-      <TicketClasses onBookTicket={openBooking} isSoldOut={isSoldOut} />
+      <TicketClasses onBookTicket={openBooking} isSoldOut={isSoldOut} isBookingOpen={isBookingOpen} />
 
       <BookingModal
         isOpen={isBookingModalOpen}

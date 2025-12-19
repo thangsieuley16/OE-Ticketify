@@ -1,11 +1,26 @@
+'use client';
+
 import { Button } from '@/components/ui/Button';
+import { useRouter } from 'next/navigation';
 
 interface HeroProps {
     onBookTicket: () => void;
     isSoldOut: boolean;
+    isBookingOpen: boolean;
 }
 
-export function Hero({ onBookTicket, isSoldOut }: HeroProps) {
+export function Hero({ onBookTicket, isSoldOut, isBookingOpen }: HeroProps) {
+    const router = useRouter();
+
+    const handleButtonClick = () => {
+        if (isSoldOut) return;
+        if (isBookingOpen) {
+            onBookTicket();
+        } else {
+            router.push('/seatmaps');
+        }
+    };
+
     return (
         <section className="relative min-h-[100dvh] flex items-center overflow-hidden py-24 md:py-0">
             {/* Nebula Background Effect */}
@@ -187,10 +202,18 @@ export function Hero({ onBookTicket, isSoldOut }: HeroProps) {
                                 LỊCH TRÌNH
                             </Button>
                             <Button
-                                onClick={onBookTicket}
-                                className={`btn-shiny text-white font-bold py-4 px-12 rounded-full text-xl tracking-widest hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(6,182,212,0.5)] border-none font-display ${isSoldOut ? 'bg-gray-600 cursor-pointer' : 'bg-gradient-to-r from-cosmic-cyan to-cosmic-purple'}`}
+                                onClick={handleButtonClick}
+                                disabled={isSoldOut}
+                                className={`group btn-shiny text-white font-bold py-4 px-12 rounded-full text-xl tracking-widest transition-transform duration-300 border-none font-display min-w-[280px] ${isSoldOut ? 'bg-gray-600 cursor-not-allowed opacity-50 shadow-none pointer-events-none' : (isBookingOpen ? 'bg-gradient-to-r from-cosmic-cyan to-cosmic-purple shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 cursor-pointer' : 'bg-gray-800 hover:bg-gray-700 cursor-pointer border border-white/10')}`}
                             >
-                                {isSoldOut ? 'SOLD OUT' : 'ĐẶT VÉ NGAY'}
+                                {isSoldOut ? 'SOLD OUT' : (
+                                    isBookingOpen ? 'ĐẶT VÉ NGAY' : (
+                                        <>
+                                            <span className="block group-hover:hidden whitespace-nowrap">14:30 29/12</span>
+                                            <span className="hidden group-hover:block whitespace-nowrap text-cosmic-cyan">Xem Seatmap</span>
+                                        </>
+                                    )
+                                )}
                             </Button>
                         </div>
                     </div>
@@ -206,10 +229,18 @@ export function Hero({ onBookTicket, isSoldOut }: HeroProps) {
                             LỊCH TRÌNH
                         </Button>
                         <Button
-                            onClick={onBookTicket}
-                            className={`flex-1 btn-shiny text-white font-bold py-4 rounded-full text-lg tracking-widest hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(6,182,212,0.5)] border-none ${isSoldOut ? 'bg-gray-600 cursor-pointer' : 'bg-gradient-to-r from-cosmic-cyan to-cosmic-purple'}`}
+                            onClick={handleButtonClick}
+                            disabled={isSoldOut}
+                            className={`group flex-1 btn-shiny text-white font-bold py-4 rounded-full text-lg tracking-widest transition-transform duration-300 border-none min-w-[200px] ${isSoldOut ? 'bg-gray-600 cursor-not-allowed opacity-50 shadow-none pointer-events-none' : (isBookingOpen ? 'bg-gradient-to-r from-cosmic-cyan to-cosmic-purple shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 cursor-pointer' : 'bg-gray-800 hover:bg-gray-700 cursor-pointer border border-white/10')}`}
                         >
-                            {isSoldOut ? 'SOLD OUT' : 'ĐẶT VÉ NGAY'}
+                            {isSoldOut ? 'SOLD OUT' : (
+                                isBookingOpen ? 'ĐẶT VÉ NGAY' : (
+                                    <>
+                                        <span className="block group-hover:hidden whitespace-nowrap">14:30 29/12</span>
+                                        <span className="hidden group-hover:block whitespace-nowrap text-cosmic-cyan">Xem Seatmap</span>
+                                    </>
+                                )
+                            )}
                         </Button>
                     </div>
                 </div>

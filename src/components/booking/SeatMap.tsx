@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 // --- GIỮ NGUYÊN PHẦN KHAI BÁO TYPES CỦA BẠN ---
 export type SeatType = 'STANDARD' | 'VIP';
 
-interface Seat {
+export interface Seat {
     id: string;
     row: string; // Using this for Category/Cluster name
     col: number;

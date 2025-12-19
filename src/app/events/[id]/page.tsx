@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { SeatMap } from '@/components/booking/SeatMap';
+import { SeatMap, Seat } from '@/components/booking/SeatMap';
 import { BookingSummary } from '@/components/booking/BookingSummary';
 import { BookerForm } from '@/components/booking/BookerForm';
 
@@ -19,7 +19,7 @@ export default function EventPage() {
     const id = params.id as string;
     const event = EVENTS[id as keyof typeof EVENTS];
 
-    const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
+    const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
     const [step, setStep] = useState<'select' | 'form'>('select');
 
     if (!event) return <div className="text-white text-center py-20">Event not found</div>;
@@ -55,7 +55,6 @@ export default function EventPage() {
                     <h2 className="text-2xl font-bold text-white">Select Seats</h2>
                     <SeatMap
                         onSelectionChange={setSelectedSeats}
-                        occupiedSeats={['A1', 'A2', 'C5']} // Mock occupied seats
                     />
                 </div>
 
