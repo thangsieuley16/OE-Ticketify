@@ -21,6 +21,7 @@ export default function EventPage() {
 
     const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
     const [step, setStep] = useState<'select' | 'form'>('select');
+    const [showLimitModal, setShowLimitModal] = useState(false);
 
     if (!event) return <div className="text-white text-center py-20">Event not found</div>;
 
@@ -40,8 +41,12 @@ export default function EventPage() {
         router.push('/confirmation');
     };
 
+    const handleLimitReached = () => {
+        setShowLimitModal(true);
+    };
+
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 relative">
             <div className="border-b border-gray-800 pb-8">
                 <h1 className="text-4xl font-bold text-white mb-2">{event.title}</h1>
                 <div className="flex gap-4 text-gray-400">
@@ -55,6 +60,7 @@ export default function EventPage() {
                     <h2 className="text-2xl font-bold text-white">Select Seats</h2>
                     <SeatMap
                         onSelectionChange={setSelectedSeats}
+                        onLimitReached={handleLimitReached}
                     />
                 </div>
 
@@ -76,6 +82,33 @@ export default function EventPage() {
                     )}
                 </div>
             </div>
+
+            {/* Custom Limit Reached Popup */}
+            {showLimitModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-in fade-in duration-200">
+                    <div className="bg-black border border-white/10 rounded-2xl w-[400px] aspect-square shadow-[0_0_50px_rgba(6,182,212,0.2)] flex flex-col items-center justify-center text-center relative">
+                        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-32 h-32">
+                            <img
+                                src="/images/cute_astronaut_limit.png"
+                                alt="Only one ticket"
+                                className="w-full h-full object-contain hover:scale-110 transition-transform duration-500"
+                            />
+                        </div>
+                        <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-wide mt-8">
+                            Úi chà chà!
+                        </h3>
+                        <p className="text-stardust text-sm mb-6">
+                            Mỗi thành viên chỉ được pick 1 ghế thôi nha
+                        </p>
+                        <button
+                            onClick={() => setShowLimitModal(false)}
+                            className="bg-cosmic-cyan hover:bg-cyan-400 text-black font-bold py-2 px-6 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.4)]"
+                        >
+                            Đã hiểu :))
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
