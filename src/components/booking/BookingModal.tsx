@@ -37,6 +37,8 @@ export function BookingModal({ isOpen, onClose, isSoldOut }: BookingModalProps) 
         message: string;
     } | null>(null);
 
+    const [errorData, setErrorData] = useState<{ title: string; message: string } | null>(null);
+
     useEffect(() => {
         if (isOpen) {
             setShowQueue(!isSoldOut);
@@ -176,10 +178,16 @@ export function BookingModal({ isOpen, onClose, isSoldOut }: BookingModalProps) 
                 });
 
             } else {
-                alert(data.error || 'Đặt vé thất bại. Vui lòng thử lại.');
+                setErrorData({
+                    title: "CHẬM TAY MẤT RỒI!",
+                    message: data.error || 'Ghế này vừa có người đặt xong.\nVui lòng chọn ghế khác nhé!'
+                });
             }
         } catch (error) {
-            alert('Có lỗi xảy ra. Vui lòng thử lại.');
+            setErrorData({
+                title: "CÓ LỖI XẢY RA",
+                message: 'Hệ thống đang bận. Vui lòng thử lại sau.'
+            });
         }
     };
 
@@ -189,6 +197,12 @@ export function BookingModal({ isOpen, onClose, isSoldOut }: BookingModalProps) 
         setPaymentInfo({ name: '', employeeId: '', phoneNumber: '' });
         setRefreshKey(prev => prev + 1); // Reload SeatMap
         setShowQueue(false); // Ensure queue screen is not shown
+    };
+
+    const handleCloseError = () => {
+        setErrorData(null);
+        setRefreshKey(prev => prev + 1); // Reload SeatMap to update occupied seats
+        setSelectedSeats([]); // Clear selected seats as they might be taken
     };
 
     return (
@@ -234,12 +248,12 @@ export function BookingModal({ isOpen, onClose, isSoldOut }: BookingModalProps) 
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 flex flex-col lg:overflow-hidden overflow-y-auto relative bg-[url('/images/stardust.png')]">
+                <div className="flex-1 flex flex-col overflow-y-auto relative bg-[url('/images/stardust.png')] custom-scrollbar">
                     {/* Grid Background */}
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
 
                     {/* Seat Map Area - Full Width */}
-                    <div className="shrink-0 min-h-[400px] lg:flex-1 lg:overflow-auto p-4 md:p-8 flex items-center justify-center relative z-10">
+                    <div className="shrink-0 min-h-[400px] p-4 md:p-8 flex items-center justify-center relative z-10">
                         <SeatMap
                             key={refreshKey}
                             onSelectionChange={(seats) => setSelectedSeats(seats)}
@@ -423,7 +437,7 @@ export function BookingModal({ isOpen, onClose, isSoldOut }: BookingModalProps) 
                     <div className="bg-black border border-white/10 rounded-3xl w-[400px] h-[400px] shadow-[0_0_50px_rgba(6,182,212,0.2)] flex flex-col items-center justify-center text-center p-8 relative">
                         <div className="w-40 h-40 mb-2">
                             <img
-                                src="/images/cute_astronaut.png"
+                                src="/images/cute_astronaut.png" // Reverted to cute_astronaut.png to match existing code logic for LimitModal if it was used there. Wait, code view shows line 426 used cute_astronaut.png.
                                 alt="Only one ticket"
                                 className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(6,182,212,0.3)]"
                             />
@@ -436,6 +450,33 @@ export function BookingModal({ isOpen, onClose, isSoldOut }: BookingModalProps) 
                         </p>
                         <button
                             onClick={() => setShowLimitModal(false)}
+                            className="bg-cosmic-cyan hover:bg-cyan-400 text-black font-bold py-3 px-8 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.4)] text-lg"
+                        >
+                            Đã hiểu
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            {/* Error Popup */}
+            {errorData && (
+                <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/90 backdrop-blur-md animate-in fade-in duration-200" onClick={(e) => e.stopPropagation()}>
+                    <div className="bg-black border border-white/10 rounded-3xl w-[400px] shadow-[0_0_50px_rgba(6,182,212,0.2)] flex flex-col items-center justify-center text-center p-8 relative">
+                        <div className="w-40 h-40 mb-2">
+                            <img
+                                src="/images/cute_astronaut.png"
+                                alt="Error"
+                                className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(6,182,212,0.3)]"
+                            />
+                        </div>
+                        <h3 className="text-2xl font-display font-bold text-white mb-2 uppercase tracking-wide">
+                            {errorData.title}
+                        </h3>
+                        <p className="text-gray-400 text-lg mb-8 font-sans px-4 whitespace-pre-line">
+                            {errorData.message}
+                        </p>
+                        <button
+                            onClick={handleCloseError}
                             className="bg-cosmic-cyan hover:bg-cyan-400 text-black font-bold py-3 px-8 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.4)] text-lg"
                         >
                             Đã hiểu

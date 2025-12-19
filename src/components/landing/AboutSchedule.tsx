@@ -9,9 +9,8 @@ const scheduleData = [
     { time: '18:30', title: 'Gala Owniverse 2025 - Dining', iconClass: 'fas fa-utensils', color: 'purple' },
     { time: '18:45', title: 'Lễ công bố OE Awards 2025 (Phần 1)', iconClass: 'fas fa-trophy', color: 'yellow' },
     { time: '19:00', title: 'Quay số trúng thưởng', iconClass: 'fas fa-gift', color: 'pink' },
-    { time: '19:20', title: 'OE Awards 2025 (Phần 2)', iconClass: 'fas fa-trophy', color: 'yellow' },
     { time: '19:45', title: 'Phần trình diễn của các nghệ sĩ khách mời', iconClass: 'fas fa-microphone', color: 'cyan' },
-    { time: '20:15', title: 'Kết thúc chương trình. Quẩy tự do!!!', iconClass: 'fas fa-music', color: 'pink' },
+    { time: '20:15', title: 'Kết thúc chương trình. Quẩy tự do!!!', iconClass: 'fas fa-music', color: 'red' },
 ];
 
 export function AboutSchedule() {
@@ -92,7 +91,7 @@ export function AboutSchedule() {
                                                 </div>
                                                 <h3 className={`text-xl font-bold mb-1 font-display ${item.highlight ? 'text-white text-2xl' : 'text-white'}`}>{item.title}</h3>
                                                 {item.description && (
-                                                    <p className="text-gray-300 text-base font-sans">{item.description}</p>
+                                                    <p className="text-gray-300 text-base font-sans tracking-widest">{item.description}</p>
                                                 )}
                                             </div>
                                         </div>

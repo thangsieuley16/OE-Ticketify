@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import { Mutex } from '@/lib/mutex';
+
+const bookingMutex = new Mutex();
 
 const DATA_FILE_PATH = path.join(process.cwd(), 'bookings.json');
 
@@ -69,51 +72,97 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Thông tin không chính xác hoặc bạn không có trong danh sách thành viên.' }, { status: 403 });
         }
 
-        const currentBookings = getBookings();
+        let response;
+        await bookingMutex.runExclusive(async () => {
+            const currentBookings = getBookings();
 
-        const alreadyBooked = currentBookings.some((b: any) => {
-            const bookedRocket = b.user.employeeId.trim().toLowerCase();
-            const bookedPhone = b.user.phoneNumber.replace(/^'/, '').trim();
-            return bookedRocket === inputRocket || bookedPhone === inputPhone;
+            const alreadyBooked = currentBookings.some((b: any) => {
+                const bookedRocket = b.user.employeeId.trim().toLowerCase();
+                const bookedPhone = b.user.phoneNumber.replace(/^'/, '').trim();
+                return bookedRocket === inputRocket || bookedPhone === inputPhone;
+            });
+
+            if (alreadyBooked) {
+                response = NextResponse.json({ error: 'Ghế này có người khác đặt ồi =))) bạn vui lòng đặt ghế khác nhaaa' }, { status: 409 });
+                return;
+            }
+
+            const allOccupiedSeatIds = new Set(currentBookings.flatMap((b: any) => b.seats.map((s: any) => s.id)));
+            const hasConflict = seats.some((seat: any) => allOccupiedSeatIds.has(seat.id));
+
+            if (hasConflict) {
+                response = NextResponse.json({ error: 'One or more seats are already booked' }, { status: 409 });
+                return;
+            }
+
+            const seatsWithZeroPrice = seats.map((seat: any) => ({
+                ...seat,
+                price: 0
+            }));
+
+            const newBooking = {
+                id: Date.now().toString(),
+                date: new Date().toISOString(),
+                user,
+                seats: seatsWithZeroPrice,
+                chatStatus: 'pending' // Initialize to avoid TS error
+            };
+
+            const standardBookingsCount = currentBookings.filter((b: any) =>
+                b.seats.some((s: any) => s.type === 'STANDARD' || s.price === 20)
+            ).length;
+
+            const hasStandardTicket = seats.some((s: any) => s.type === 'STANDARD' || s.price === 20);
+
+            const isEarlyBird = hasStandardTicket && standardBookingsCount < 10;
+
+            const isChatSent = await sendChatNotification(inputRocket, seats.map((s: any) => s.id).join(', '), isEarlyBird);
+
+            // Update booking with chat status
+            newBooking.chatStatus = isChatSent ? 'sent' : 'failed';
+
+            // Update the booking in the list (since we pushed it before - wait, we should push AFTER updating or update the reference)
+            // Actually best to push AFTER.
+
+            currentBookings.push(newBooking);
+            saveBookings(currentBookings);
+
+            response = NextResponse.json({ success: true, booking: newBooking, isEarlyBird });
         });
 
-        if (alreadyBooked) {
-            return NextResponse.json({ error: 'Bạn đã đặt vé rồi! Mỗi người chỉ được đặt 1 vé.' }, { status: 409 });
-        }
-
-        const allOccupiedSeatIds = new Set(currentBookings.flatMap((b: any) => b.seats.map((s: any) => s.id)));
-        const hasConflict = seats.some((seat: any) => allOccupiedSeatIds.has(seat.id));
-
-        if (hasConflict) {
-            return NextResponse.json({ error: 'One or more seats are already booked' }, { status: 409 });
-        }
-
-        const seatsWithZeroPrice = seats.map((seat: any) => ({
-            ...seat,
-            price: 0
-        }));
-
-        const newBooking = {
-            id: Date.now().toString(),
-            date: new Date().toISOString(),
-            user,
-            seats: seatsWithZeroPrice
-        };
-
-        const standardBookingsCount = currentBookings.filter((b: any) =>
-            b.seats.some((s: any) => s.type === 'STANDARD' || s.price === 20)
-        ).length;
-
-        const hasStandardTicket = seats.some((s: any) => s.type === 'STANDARD' || s.price === 20);
-
-        const isEarlyBird = hasStandardTicket && standardBookingsCount < 10;
-
-        currentBookings.push(newBooking);
-        saveBookings(currentBookings);
-
-        return NextResponse.json({ success: true, booking: newBooking, isEarlyBird });
+        return response!;
     } catch (error) {
         console.error("Booking error:", error);
         return NextResponse.json({ error: 'Failed to save booking' }, { status: 500 });
+    }
+}
+
+async function sendChatNotification(username: string, ticketId: string, isEarlyBird: boolean): Promise<boolean> {
+    const payload = {
+        username,
+        ticketId,
+        isEarlyBird
+    };
+
+    try {
+        const response = await fetch('https://chat.ownego.com/api/apps/public/1891b806-120e-4e23-92d0-2bc3793ac3a1/messenger', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Failed to send chat notification:', response.status, response.statusText, errorText);
+            return false;
+        } else {
+            console.log('Chat notification sent successfully');
+            return true;
+        }
+    } catch (error) {
+        console.error('Error sending chat notification:', error);
+        return false;
     }
 }

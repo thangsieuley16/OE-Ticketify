@@ -29,9 +29,9 @@ export function TicketClasses({ onBookTicket, isSoldOut }: TicketClassesProps) {
                                         <span className="text-4xl">👑</span>
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold text-white mb-2 font-display tracking-wide">Vé Staff</h3>
+                                        <h3 className="text-2xl font-bold text-white mb-2 font-display tracking-wide">Thẻ Phi Hành Đoàn</h3>
                                         <p className="text-stardust text-xl max-w-md font-sans">
-                                            (Sound Check & Send off) - Lao động "khổ cực" với mong muốn tạo ra một buổi GALA đáng nhớ
+                                            (Sound check & all access) Dành riêng cho đội ngũ vận hành - ekip kiến tạo nên trải nghiệm Owniverse hoàn hảo.
                                         </p>
                                     </div>
                                 </div>
@@ -56,9 +56,9 @@ export function TicketClasses({ onBookTicket, isSoldOut }: TicketClassesProps) {
                                         <span className="text-4xl">🪐</span>
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold text-white mb-2 font-display tracking-wide group-hover:text-cosmic-cyan transition-colors">Vé Owniverse</h3>
+                                        <h3 className="text-2xl font-bold text-white mb-2 font-display tracking-wide group-hover:text-cosmic-cyan transition-colors">Vé Nhà Du Hành</h3>
                                         <p className="text-stardust text-xl max-w-md font-sans">
-                                            Hát hò, nhảy múa, chơi bời, có thưởng, hãy tham gia để có một kỷ niệm đáng nhớ.
+                                            (Full experience) Tấm vé thông hành chính thức gia nhập Owniverse với đặc quyền tận hưởng trọn vẹn đêm gala.
                                         </p>
                                     </div>
                                 </div>

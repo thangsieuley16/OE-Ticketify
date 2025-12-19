@@ -19,12 +19,10 @@ export async function POST(request: Request) {
         const fileContent = fs.readFileSync(csvPath, 'utf-8');
         const lines = fileContent.split('\n').filter(line => line.trim() !== '');
 
-        // Skip header row
         const dataRows = lines.slice(1);
 
         let isVerified = false;
 
-        // Normalize user input for comparison
         const inputName = name.trim().toLowerCase();
         const inputRocket = employeeId.trim().toLowerCase();
         const inputPhone = phoneNumber.replace(/^'/, '').trim();

@@ -27,26 +27,41 @@ interface ClusterConfig {
     price: number;
 }
 
+const clusterColors: Record<string, string> = {
+    'CAT6A': '#06B0E7',
+    'CAT6B': '#06B0E7',
+    'CAT5A': '#4056A5',
+    'CAT5B': '#4056A5',
+    'CAT4A': '#F8C5DB',
+    'CAT4B': '#F8C5DB',
+    'CAT3A': '#260C44',
+    'CAT3B': '#260C44',
+    'CAT2A': '#00657D',
+    'CAT2B': '#00657D',
+    'CAT1': '#020303',
+};
+
 export function SeatMap({ onSelectionChange, onLimitReached }: SeatMapProps) {
     const [seats, setSeats] = useState<Seat[]>([]);
 
     // --- CẤU HÌNH CLUSTER CHO LAYOUT MỚI ---
 
-    // Hàng trên (Top Row): CAT 4A, CAT 2A, CAT 3A, CAT 5A
+    // Hàng trên (Top Row): CAT 3A, CAT 2A | CAT 2B, CAT 3B
     const topClusters: ClusterConfig[] = [
-        { id: 'CAT4A', label: 'CAT 4A', count: 6, type: 'STANDARD', price: 20 },
-        { id: 'CAT2A', label: 'CAT 2A', count: 6, type: 'STANDARD', price: 20 },
         { id: 'CAT3A', label: 'CAT 3A', count: 6, type: 'STANDARD', price: 20 },
-        { id: 'CAT5A', label: 'CAT 5A', count: 6, type: 'STANDARD', price: 20 },
+        { id: 'CAT2A', label: 'CAT 2A', count: 7, type: 'STANDARD', price: 20 },
+        { id: 'CAT2B', label: 'CAT 2B', count: 7, type: 'STANDARD', price: 20 },
+        { id: 'CAT3B', label: 'CAT 3B', count: 6, type: 'STANDARD', price: 20 },
     ];
 
-    // Hàng dưới (Bottom Row): CAT 6A, 4B, 2B, 1, 3B, 5B, 6B
+    // Hàng dưới (Bottom Row): CAT 6A, 5A, 4A | CAT 1 | CAT 4B, 5B, 6B
+    // "còn lại chỉ có 6 ghế" -> Set 4A/4B back to 6
     const bottomClusters: ClusterConfig[] = [
         { id: 'CAT6A', label: 'CAT 6A', count: 6, type: 'STANDARD', price: 20 },
-        { id: 'CAT4B', label: 'CAT 4B', count: 6, type: 'STANDARD', price: 20 },
-        { id: 'CAT2B', label: 'CAT 2B', count: 7, type: 'STANDARD', price: 20 },
+        { id: 'CAT5A', label: 'CAT 5A', count: 6, type: 'STANDARD', price: 20 },
+        { id: 'CAT4A', label: 'CAT 4A', count: 6, type: 'STANDARD', price: 20 },
         { id: 'CAT1', label: 'CAT 1', count: 6, type: 'STANDARD', price: 20 },
-        { id: 'CAT3B', label: 'CAT 3B', count: 7, type: 'STANDARD', price: 20 },
+        { id: 'CAT4B', label: 'CAT 4B', count: 6, type: 'STANDARD', price: 20 },
         { id: 'CAT5B', label: 'CAT 5B', count: 6, type: 'STANDARD', price: 20 },
         { id: 'CAT6B', label: 'CAT 6B', count: 6, type: 'STANDARD', price: 20 },
     ];
@@ -151,18 +166,24 @@ export function SeatMap({ onSelectionChange, onLimitReached }: SeatMapProps) {
         const clusterSeats = seats.filter(s => s.row === config.label);
         const containerClass = "bg-[#0a0f18] border border-white/10 p-2 rounded-lg flex relative group hover:border-white/20 transition-colors";
 
-        // Layout đặc biệt cho CAT 5A/5B (7 ghế)
+        // Layout đặc biệt cho CAT 2A/2B (7 ghế): Ghế 1 ở giữa, 2-4 trái, 5-7 phải
         if (config.count === 7) {
-            const leftCol = clusterSeats.filter(s => [1, 2, 3].includes(s.col));
-            const rightCol = clusterSeats.filter(s => [4, 5, 6].includes(s.col));
-            const centerSeat = clusterSeats.find(s => s.col === 7);
+            const centerSeat = clusterSeats.find(s => s.col === 1);
+            const leftCol = clusterSeats.filter(s => [2, 3, 4].includes(s.col));
+            const rightCol = clusterSeats.filter(s => [5, 6, 7].includes(s.col));
 
             return (
                 <div key={config.id} className={`${containerClass} flex-col items-center gap-2`}>
-                    <div className="flex gap-2 items-stretch">
+                    <div className="flex items-stretch">
                         <div className="flex flex-col gap-2">{leftCol.map(renderSeat)}</div>
-                        <div className="w-8 flex items-center justify-center border border-white/5 bg-white/5 rounded mx-1">
-                            <span className="text-white/40 text-[9px] font-bold uppercase -rotate-90 whitespace-nowrap tracking-wider font-display">
+                        <div
+                            className="w-8 flex items-center justify-center border border-white/5 rounded mx-1 relative overflow-hidden"
+                            style={{
+                                backgroundColor: clusterColors[config.id] || '#FFFFFF0D',
+                                backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.4) 0%, transparent 60%), repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255,255,255,0.1) 5px, rgba(255,255,255,0.1) 10px)'
+                            }}
+                        >
+                            <span className="text-black text-[10px] font-bold uppercase -rotate-90 whitespace-nowrap tracking-wider font-display relative z-10 drop-shadow-md" style={{ textShadow: '-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff' }}>
                                 {config.label}
                             </span>
                         </div>
@@ -178,10 +199,16 @@ export function SeatMap({ onSelectionChange, onLimitReached }: SeatMapProps) {
         const col2 = clusterSeats.filter(s => s.col > 3);
 
         return (
-            <div key={config.id} className={containerClass}>
+            <div key={config.id} className={`${containerClass} items-stretch`}>
                 <div className="flex flex-col gap-2">{col1.map(renderSeat)}</div>
-                <div className="w-8 flex items-center justify-center border border-white/5 bg-white/5 rounded mx-1">
-                    <span className="text-white/40 text-[9px] font-bold uppercase -rotate-90 whitespace-nowrap tracking-wider font-display">
+                <div
+                    className="w-8 flex items-center justify-center border border-white/5 rounded mx-1 self-stretch relative overflow-hidden"
+                    style={{
+                        backgroundColor: clusterColors[config.id] || '#FFFFFF0D',
+                        backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.4) 0%, transparent 60%), repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255,255,255,0.1) 5px, rgba(255,255,255,0.1) 10px)'
+                    }}
+                >
+                    <span className="text-black text-[10px] font-bold uppercase -rotate-90 whitespace-nowrap tracking-wider font-display relative z-10 drop-shadow-md" style={{ textShadow: '-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff' }}>
                         {config.label}
                     </span>
                 </div>
@@ -204,13 +231,23 @@ export function SeatMap({ onSelectionChange, onLimitReached }: SeatMapProps) {
             {/* Scroll Container */}
             <div className="w-full h-full overflow-auto custom-scrollbar flex items-center justify-center p-10">
 
-                <div className="flex flex-col gap-0 relative">
+                <div className="flex flex-col gap-0 relative items-center">
 
                     {/* === SÂN KHẤU (STAGE) === */}
                     <div className="flex flex-col items-center mb-10">
                         {/* Khối chính sân khấu */}
-                        <div className="w-[630px] h-28 border border-cyan-500/50 rounded-2xl bg-[#0a1520] relative flex items-center justify-center shadow-[0_0_40px_rgba(6,182,212,0.15)] z-10 backdrop-blur-sm">
-                            <h1 className="text-xl font-display font-normal text-white/50 tracking-[0.2em] drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
+                        <div
+                            className="w-[630px] h-28 border border-cyan-500/30 rounded-2xl relative flex items-center justify-center shadow-[0_0_40px_rgba(6,182,212,0.2)] z-10 overflow-hidden"
+                            style={{
+                                backgroundImage: 'url(/images/stage_bg.png)',
+                                backgroundSize: '120% auto', // Zoom to hide black corners
+                                backgroundPosition: 'center 40%' // Adjust position slightly up
+                            }}
+                        >
+                            {/* Overlay để chữ nổi hơn */}
+                            <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
+
+                            <h1 className="relative z-10 text-2xl font-display font-bold text-white tracking-[0.2em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] text-shadow-glow">
                                 SÂN KHẤU
                             </h1>
                         </div>
@@ -221,30 +258,38 @@ export function SeatMap({ onSelectionChange, onLimitReached }: SeatMapProps) {
 
 
                     {/* === HÀNG GHẾ TRÊN (TOP ROW) === */}
-                    <div className="flex items-stretch gap-6 mb-6">
+                    <div className="flex items-end gap-6 mb-6">
 
                         {/* CAT 6 - STANDING ZONE (STAFF ONLY) */}
-                        <div className="w-[110px] flex flex-col">
-                            <div className="flex-1 border border-dashed border-white/20 rounded-lg bg-white/5 flex flex-col items-center justify-center p-2 text-center group hover:border-cyan-500/30 transition-colors cursor-default">
-                                <span className="text-white/70 font-bold text-[10px] uppercase tracking-wider mb-2 font-display">
-                                    PREMIUM
-                                    <br />
-                                    STANDING ZONE
-                                </span>
-                                <span className="text-[8px] text-white/30 uppercase tracking-wider bg-white/5 px-2 py-0.5 rounded">
-                                    Staff Only
-                                </span>
+                        <div className="w-[110px] flex flex-col self-stretch">
+                            <div
+                                className="flex-1 border border-dashed border-white/20 rounded-lg flex flex-col items-center justify-center p-2 text-center group hover:border-cyan-500/30 transition-colors cursor-default relative overflow-hidden"
+                                style={{
+                                    backgroundColor: '#020303',
+                                    backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.15) 0%, transparent 70%), repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px)'
+                                }}
+                            >
+                                <div className="relative z-10">
+                                    <span className="text-white/70 font-bold text-[10px] uppercase tracking-wider mb-2 font-display block">
+                                        PREMIUM
+                                        <br />
+                                        STANDING ZONE
+                                    </span>
+                                    <span className="text-[8px] text-white/30 uppercase tracking-wider bg-white/5 px-2 py-0.5 rounded inline-block">
+                                        Staff Only
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
-                        {renderCluster(topClusters[0])} {/* CAT 4A */}
+                        {renderCluster(topClusters[0])} {/* CAT 3A */}
                         {renderCluster(topClusters[1])} {/* CAT 2A */}
 
                         {/* Khoảng trống giữa (Runway Gap) */}
                         <div className="w-[130px]"></div>
 
-                        {renderCluster(topClusters[2])} {/* CAT 3A */}
-                        {renderCluster(topClusters[3])} {/* CAT 5A */}
+                        {renderCluster(topClusters[2])} {/* CAT 2B */}
+                        {renderCluster(topClusters[3])} {/* CAT 3B */}
 
                         {/* Spacer Right cho CAT 5B */}
                         <div className="w-[110px]"></div>
@@ -254,15 +299,15 @@ export function SeatMap({ onSelectionChange, onLimitReached }: SeatMapProps) {
                     {/* === HÀNG GHẾ DƯỚI (BOTTOM ROW) === */}
                     <div className="flex items-start gap-6">
                         {renderCluster(bottomClusters[0])} {/* CAT 6A */}
-                        {renderCluster(bottomClusters[1])} {/* CAT 4B */}
-                        {renderCluster(bottomClusters[2])} {/* CAT 2B */}
+                        {renderCluster(bottomClusters[1])} {/* CAT 5A */}
+                        {renderCluster(bottomClusters[2])} {/* CAT 4A */}
 
                         {/* PREMIUM - Thẳng hàng */}
                         <div>
                             {renderCluster(bottomClusters[3])} {/* CAT 1 */}
                         </div>
 
-                        {renderCluster(bottomClusters[4])} {/* CAT 3B */}
+                        {renderCluster(bottomClusters[4])} {/* CAT 4B */}
                         {renderCluster(bottomClusters[5])} {/* CAT 5B */}
                         {renderCluster(bottomClusters[6])} {/* CAT 6B */}
                     </div>

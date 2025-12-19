@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { Roboto, Tektur, Smooch_Sans } from "next/font/google";
+import { Roboto, Tektur, IBM_Plex_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
@@ -37,9 +37,10 @@ const tektur = Tektur({
   display: "swap",
 });
 
-const smoochSans = Smooch_Sans({
+const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin", "vietnamese"],
-  variable: "--font-smooch",
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  variable: "--font-ibm-plex-sans",
   display: "swap",
 });
 
@@ -63,7 +64,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning={true}
-        className={`${chatime.variable} ${inter.variable} ${roboto.variable} ${tektur.variable} ${smoochSans.variable} antialiased bg-deep-space text-white min-h-screen flex flex-col font-sans`}
+        className={`${chatime.variable} ${inter.variable} ${roboto.variable} ${tektur.variable} ${ibmPlexSans.variable} antialiased bg-deep-space text-white min-h-screen flex flex-col font-sans`}
       >
         <Header />
         <main className="flex-grow w-full">

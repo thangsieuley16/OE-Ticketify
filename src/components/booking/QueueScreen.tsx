@@ -15,23 +15,24 @@ export function QueueScreen({ onComplete }: QueueScreenProps) {
     }, [queueCount, onComplete]);
 
     useEffect(() => {
-        // Initialize random count between 10 and 70
-        const initialCount = Math.floor(Math.random() * 61) + 10;
+        // Initialize random count between 40 and 50
+        const initialCount = Math.floor(Math.random() * 11) + 30;
         setQueueCount(initialCount);
 
         let timeoutId: NodeJS.Timeout;
 
         const processQueue = () => {
-            // Slower delay: Random between 1000ms and 2000ms
-            const delay = Math.floor(Math.random() * 1000) + 1000;
+            // Total countdown time decreased -> Increase speed
+            // Faster delay: Random between 200ms and 800ms
+            const delay = Math.floor(Math.random() * 600) + 200;
 
             timeoutId = setTimeout(() => {
                 setQueueCount((prev) => {
                     // If prev is null (shouldn't happen after init) or <= 0, stop
                     if (prev === null || prev <= 0) return 0;
 
-                    // Decrease by random amount 1-3 (slower decrease)
-                    const decrease = Math.floor(Math.random() * 3) + 1;
+                    // Decrease by random amount 1-2
+                    const decrease = Math.floor(Math.random() * 2) + 1;
                     const nextValue = prev - decrease;
 
                     if (nextValue <= 0) {
