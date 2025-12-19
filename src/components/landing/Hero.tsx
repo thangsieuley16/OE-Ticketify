@@ -209,7 +209,7 @@ export function Hero({ onBookTicket, isSoldOut, isBookingOpen }: HeroProps) {
                                 {isSoldOut ? 'SOLD OUT' : (
                                     isBookingOpen ? 'ĐẶT VÉ NGAY' : (
                                         <>
-                                            <span className="block group-hover:hidden whitespace-nowrap">14:30 29/12</span>
+                                            <span className="block group-hover:hidden whitespace-nowrap">16:10 19/12</span>
                                             <span className="hidden group-hover:block whitespace-nowrap text-cosmic-cyan">Xem Seatmap</span>
                                         </>
                                     )
@@ -236,7 +236,7 @@ export function Hero({ onBookTicket, isSoldOut, isBookingOpen }: HeroProps) {
                             {isSoldOut ? 'SOLD OUT' : (
                                 isBookingOpen ? 'ĐẶT VÉ NGAY' : (
                                     <>
-                                        <span className="block group-hover:hidden whitespace-nowrap">14:30 29/12</span>
+                                        <span className="block group-hover:hidden whitespace-nowrap">16:10 19/12</span>
                                         <span className="hidden group-hover:block whitespace-nowrap text-cosmic-cyan">Xem Seatmap</span>
                                     </>
                                 )

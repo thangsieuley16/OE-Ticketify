@@ -15,18 +15,9 @@ export default function Home() {
 
   useEffect(() => {
     const checkTime = () => {
-      // "giảm thời gian chờ" -> Set target to be essentially now
-      const targetTime = new Date('2025-12-19T14:30:00').getTime(); // Just a fallback, logic below overrides
+      const targetTime = new Date('2025-12-19T16:10:00').getTime();
       const now = new Date().getTime();
-      // Logic requested: reduce wait time.
-      // If user wants to see countdown for 3s then open: target = now + 3000
-      // If user wants it open immediately with "3s ago": target = now - 3000
-      // Context: "giảm thời gian chờ" usually means "make it short".
-      // I will set it to FIXED past time again to ensure it is OPEN, as per "open booking" previous request.
-      // But user said "(-3s compared to current time)".
-      // This implies target = now - 3000.
-      // Changing logic to dynamic check.
-      setIsBookingOpen(true);
+      setIsBookingOpen(now >= targetTime);
     };
 
     checkTime(); // Check immediately
