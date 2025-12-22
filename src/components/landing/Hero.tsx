@@ -47,8 +47,6 @@ export function Hero({ onBookTicket, isSoldOut, isBookingOpen }: HeroProps) {
         if (isSoldOut) return;
         if (isBookingOpen) {
             onBookTicket();
-        } else {
-            router.push('/seatmaps');
         }
     };
 
