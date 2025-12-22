@@ -21,10 +21,10 @@ export function AboutEvent() {
                         <div className="prose prose-invert prose-lg max-w-none">
                             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed font-sans">
                                 <span className="float-left text-7xl md:text-8xl font-display font-bold text-cosmic-cyan mr-4 leading-[0.8] pt-2">C</span>
-                                hào mừng đến với <strong className="text-white">Owniverse</strong> — Năm 2025 đã khép lại với rất nhiều nỗ lực và dấu ấn. Thay vì một buổi tiệc tổng kết thông thường, Ownego trân trọng mời bạn bước vào một không gian trải nghiệm hoàn toàn khác biệt: Một đêm Gala hiện đại, sôi động và đậm chất công nghệ.
+                                hào mừng đến với <strong className="text-white">Owniverse</strong> — Năm 2025 đã khép lại với rất nhiều nỗ lực và dấu ấn. Thay vì một buổi tổng kết thông thường, Ownego trân trọng mời bạn bước vào một không gian trải nghiệm hoàn toàn khác biệt: Một đêm Gala hiện đại, sôi động và đậm chất công nghệ.
                             </p>
                             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mt-6 font-sans">
-                                Tại <strong className="text-cosmic-cyan">Owniverse</strong>, chúng ta sẽ không chỉ nhìn lại chặng đường đã qua, mà còn là khoảnh khắc ý nghĩa để tôn vinh sự cống hiến, nhiệt huyết và tinh thần đoàn kết của mỗi thành viên. Hãy sẵn sàng chọn cho mình một vị trí đẹp nhất để tận hưởng đêm tiệc vinh danh hoành tráng dành riêng cho chính bạn.
+                                Tại <strong className="text-cosmic-cyan">Owniverse</strong>, chúng ta sẽ không chỉ nhìn lại chặng đường đã qua, mà đây còn là khoảnh khắc ý nghĩa để cùng tôn vinh sự cống hiến, nhiệt huyết và tinh thần đoàn kết của mỗi thành viên. Hãy sẵn sàng chọn cho mình một vị trí đẹp nhất để tận hưởng đêm tiệc vinh danh hoành tráng này.
                             </p>
                         </div>
 

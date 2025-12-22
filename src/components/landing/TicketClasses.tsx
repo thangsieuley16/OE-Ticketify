@@ -61,7 +61,7 @@ export function TicketClasses({ onBookTicket, isSoldOut, isBookingOpen }: Ticket
                                     <div>
                                         <h3 className="text-2xl font-bold text-white mb-2 font-display tracking-wide">Vé Nhà Du Hành</h3>
                                         <p className="text-stardust text-xl max-w-md font-sans">
-                                            (Full experience) Tấm vé thông hành chính thức gia nhập Owniverse với đặc quyền tận hưởng trọn vẹn đêm gala.
+                                            (Full experience) Tấm vé thông hành giúp bạn chính thức gia nhập Owniverse với đặc quyền tận hưởng trọn vẹn đêm gala.
                                         </p>
                                     </div>
                                 </div>
