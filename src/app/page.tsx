@@ -15,8 +15,8 @@ export default function Home() {
 
   useEffect(() => {
     const checkTime = () => {
-      const targetTime = new Date('2025-12-29T14:30:00').getTime();
       const now = new Date().getTime();
+      const targetTime = new Date('2025-12-29T14:30:00+07:00').getTime();
       setIsBookingOpen(now >= targetTime);
     };
 

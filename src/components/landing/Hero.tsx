@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 interface HeroProps {
     onBookTicket: () => void;
@@ -11,6 +12,36 @@ interface HeroProps {
 
 export function Hero({ onBookTicket, isSoldOut, isBookingOpen }: HeroProps) {
     const router = useRouter();
+    const [timeLeft, setTimeLeft] = useState('');
+
+    useEffect(() => {
+        const targetDate = new Date('2025-12-29T14:30:00+07:00');
+
+        const calculateTimeLeft = () => {
+            const now = new Date();
+            const difference = targetDate.getTime() - now.getTime();
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((difference / 1000 / 60) % 60);
+                const seconds = Math.floor((difference / 1000) % 60);
+
+                return `${days}d ${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s`;
+            } else {
+                return '00d 00h 00m 00s';
+            }
+        };
+
+        // Set initial time
+        setTimeLeft(calculateTimeLeft());
+
+        const timer = setInterval(() => {
+            setTimeLeft(calculateTimeLeft());
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, []);
 
     const handleButtonClick = () => {
         if (isSoldOut) return;
@@ -190,10 +221,7 @@ export function Hero({ onBookTicket, isSoldOut, isBookingOpen }: HeroProps) {
                             </div>
                         </div>
 
-                        {/* CTA Buttons - Centered absolutely relative to the right column container, below the core? 
-                            Actually, the design shows buttons at bottom right. The core is centered.
-                            Let's keep buttons independent of the rotation.
-                        */}
+                        {/* CTA Buttons */}
                         <div className="absolute bottom-0 right-0 z-20 translate-y-[56px] hidden lg:flex gap-4">
                             <Button
                                 onClick={() => document.getElementById('schedule')?.scrollIntoView({ behavior: 'smooth' })}
@@ -204,13 +232,20 @@ export function Hero({ onBookTicket, isSoldOut, isBookingOpen }: HeroProps) {
                             <Button
                                 onClick={handleButtonClick}
                                 disabled={isSoldOut}
-                                className={`group btn-shiny text-white font-bold py-4 px-12 rounded-full text-xl tracking-widest transition-transform duration-300 border-none font-display min-w-[280px] ${isSoldOut ? 'bg-gray-600 cursor-not-allowed opacity-50 shadow-none pointer-events-none' : (isBookingOpen ? 'bg-gradient-to-r from-cosmic-cyan to-cosmic-purple shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 cursor-pointer' : 'bg-gray-800 hover:bg-gray-700 cursor-pointer border border-white/10')}`}
+                                variant="secondary"
+                                className={`group btn-shiny font-bold py-4 px-12 rounded-full text-xl tracking-widest transition-transform duration-300 border-none font-display min-w-[280px] ${isSoldOut
+                                    ? 'bg-gray-600 text-white cursor-not-allowed opacity-50 shadow-none pointer-events-none'
+                                    : (isBookingOpen
+                                        ? '!bg-gradient-to-r from-cosmic-cyan to-cosmic-purple !text-white shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 cursor-pointer'
+                                        : '!bg-black !border-2 !border-cosmic-cyan !text-white shadow-[0_0_20px_rgba(6,182,212,0.4)] backdrop-blur-md hover:!bg-white hover:!text-black hover:!shadow-[0_0_30px_rgba(255,255,255,0.6)] hover:!scale-105 cursor-pointer'
+                                    )
+                                    }`}
                             >
                                 {isSoldOut ? 'SOLD OUT' : (
                                     isBookingOpen ? 'ĐẶT VÉ NGAY' : (
                                         <>
-                                            <span className="block group-hover:hidden whitespace-nowrap">14:30 29/12</span>
-                                            <span className="hidden group-hover:block whitespace-nowrap text-cosmic-cyan">Xem Seatmap</span>
+                                            <span className="whitespace-nowrap drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] block group-hover:hidden">{timeLeft}</span>
+                                            <span className="whitespace-nowrap text-black hidden group-hover:block">14:30 - 29/12</span>
                                         </>
                                     )
                                 )}
@@ -231,13 +266,20 @@ export function Hero({ onBookTicket, isSoldOut, isBookingOpen }: HeroProps) {
                         <Button
                             onClick={handleButtonClick}
                             disabled={isSoldOut}
-                            className={`group flex-1 btn-shiny text-white font-bold py-4 rounded-full text-lg tracking-widest transition-transform duration-300 border-none min-w-[200px] ${isSoldOut ? 'bg-gray-600 cursor-not-allowed opacity-50 shadow-none pointer-events-none' : (isBookingOpen ? 'bg-gradient-to-r from-cosmic-cyan to-cosmic-purple shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 cursor-pointer' : 'bg-gray-800 hover:bg-gray-700 cursor-pointer border border-white/10')}`}
+                            variant="secondary"
+                            className={`group flex-1 btn-shiny font-bold py-4 rounded-full text-lg tracking-widest transition-transform duration-300 border-none min-w-[200px] ${isSoldOut
+                                ? 'bg-gray-600 text-white cursor-not-allowed opacity-50 shadow-none pointer-events-none'
+                                : (isBookingOpen
+                                    ? '!bg-gradient-to-r from-cosmic-cyan to-cosmic-purple !text-white shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 cursor-pointer'
+                                    : '!bg-black !border-2 !border-cosmic-cyan !text-white shadow-[0_0_20px_rgba(6,182,212,0.4)] backdrop-blur-md hover:!bg-white hover:!text-black hover:!shadow-[0_0_30px_rgba(255,255,255,0.6)] hover:!scale-105 cursor-pointer'
+                                )
+                                }`}
                         >
                             {isSoldOut ? 'SOLD OUT' : (
                                 isBookingOpen ? 'ĐẶT VÉ NGAY' : (
                                     <>
-                                        <span className="block group-hover:hidden whitespace-nowrap">14:30 29/12</span>
-                                        <span className="hidden group-hover:block whitespace-nowrap text-cosmic-cyan">Xem Seatmap</span>
+                                        <span className="whitespace-nowrap drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] block group-hover:hidden">{timeLeft}</span>
+                                        <span className="whitespace-nowrap text-black hidden group-hover:block">14:30 - 29/12</span>
                                     </>
                                 )
                             )}
