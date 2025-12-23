@@ -165,21 +165,63 @@ export default function AdminBookings() {
                                                 )}
                                             </td>
                                             <td className="p-6 text-right">
-                                                {booking.chatStatus === 'sent' ? (
-                                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-medium border border-green-500/20">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
-                                                        Sent
-                                                    </span>
-                                                ) : booking.chatStatus === 'failed' ? (
-                                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-xs font-medium border border-red-500/20">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-red-400"></span>
-                                                        Failed
-                                                    </span>
-                                                ) : (
-                                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 text-white/30 text-xs font-medium border border-white/10">
-                                                        -
-                                                    </span>
-                                                )}
+                                                <div className="flex flex-col items-end gap-2">
+                                                    {booking.chatStatus === 'sent' ? (
+                                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-medium border border-green-500/20">
+                                                            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                                                            Sent
+                                                        </span>
+                                                    ) : booking.chatStatus === 'failed' ? (
+                                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-xs font-medium border border-red-500/20">
+                                                            <span className="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                                                            Failed
+                                                        </span>
+                                                    ) : (
+                                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 text-white/30 text-xs font-medium border border-white/10">
+                                                            Pending
+                                                        </span>
+                                                    )}
+
+                                                    <button
+                                                        onClick={() => {
+                                                            const password = prompt("Nhập mật khẩu admin để gửi lại tin nhắn:");
+                                                            if (password) {
+                                                                const btn = document.getElementById(`resend-${booking.id}`) as HTMLButtonElement;
+                                                                if (btn) {
+                                                                    btn.disabled = true;
+                                                                    btn.innerText = "Sending...";
+                                                                }
+
+                                                                fetch('/api/bookings/resend', {
+                                                                    method: 'POST',
+                                                                    headers: { 'Content-Type': 'application/json' },
+                                                                    body: JSON.stringify({ bookingId: booking.id, password })
+                                                                })
+                                                                    .then(res => res.json())
+                                                                    .then(data => {
+                                                                        if (data.success) {
+                                                                            alert("Gửi thành công!");
+                                                                            // Simple reload to refresh status
+                                                                            window.location.reload();
+                                                                        } else {
+                                                                            alert("Lỗi: " + (data.error || "Unknown error"));
+                                                                        }
+                                                                    })
+                                                                    .catch(err => alert("Lỗi kết nối"))
+                                                                    .finally(() => {
+                                                                        if (btn) {
+                                                                            btn.disabled = false;
+                                                                            btn.innerText = "Resend MSG";
+                                                                        }
+                                                                    });
+                                                            }
+                                                        }}
+                                                        id={`resend-${booking.id}`}
+                                                        className="text-[10px] bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 px-2 py-1 rounded transition-colors"
+                                                    >
+                                                        Resend MSG
+                                                    </button>
+                                                </div>
                                             </td>
                                         </tr>
                                     ))

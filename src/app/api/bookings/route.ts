@@ -76,7 +76,19 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Thông tin không chính xác hoặc bạn không có trong danh sách thành viên.' }, { status: 403 });
         }
 
-        let response;
+        // --- TIME CHECK (LOCK until 14:30 29/12/2025) ---
+        const openingTime = new Date('2025-12-29T14:30:00+07:00').getTime();
+        const now = new Date().getTime();
+        if (now < openingTime) {
+            return NextResponse.json({ error: 'Cổng bán vé sẽ mở vào lúc 14:30 ngày 29/12/2025. Vui lòng quay lại sau!' }, { status: 403 });
+        }
+        // ----------------------------------------------------
+
+        // Variables to hold data extracting from the lock
+        let response: NextResponse | undefined;
+        let chatNotificationTask: { username: string; ticketId: string; isEarlyBird: boolean } | null = null;
+        let bookingReference: any = null;
+
         await bookingMutex.runExclusive(async () => {
             const currentBookings = getBookings();
 
@@ -118,7 +130,7 @@ export async function POST(request: Request) {
                 date: new Date().toISOString(),
                 user,
                 seats: seatsWithZeroPrice,
-                chatStatus: 'pending' // Initialize to avoid TS error
+                chatStatus: 'pending' // Initially pending
             };
 
             const standardBookingsCount = currentBookings.filter((b: any) =>
@@ -129,19 +141,35 @@ export async function POST(request: Request) {
 
             const isEarlyBird = hasStandardTicket && standardBookingsCount < 10;
 
-            const isChatSent = await sendChatNotification(targetRocketUsername, seats.map((s: any) => s.id).join(', '), isEarlyBird);
-
-            // Update booking with chat status
-            newBooking.chatStatus = isChatSent ? 'sent' : 'failed';
-
-            // Update the booking in the list (since we pushed it before - wait, we should push AFTER updating or update the reference)
-            // Actually best to push AFTER.
-
+            // Save booking immediately
             currentBookings.push(newBooking);
             saveBookings(currentBookings);
 
-            response = NextResponse.json({ success: true, booking: newBooking, isEarlyBird });
+            // Prepare task for outside lock
+            chatNotificationTask = {
+                username: targetRocketUsername,
+                ticketId: seats.map((s: any) => s.id).join(', '),
+                isEarlyBird
+            };
+
+            bookingReference = newBooking;
+
+            // We do NOT create the response here for success anymore.
+            // We wait until after chat to report "sent" or "failed".
         });
+
+        // --- CRITICAL: MOVED OUTSIDE MUTEX ---
+        // This runs while the lock is FREE for other users.
+        if (chatNotificationTask && bookingReference) {
+            const { username, ticketId, isEarlyBird } = chatNotificationTask;
+            const isChatSent = await sendChatNotification(username, ticketId, isEarlyBird);
+
+            // Update the in-memory reference
+            bookingReference.chatStatus = isChatSent ? 'sent' : 'failed';
+
+            // Now create the response with the CORRECT status
+            response = NextResponse.json({ success: true, booking: bookingReference, isEarlyBird });
+        }
 
         return response!;
     } catch (error) {
