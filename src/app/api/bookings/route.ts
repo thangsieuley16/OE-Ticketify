@@ -76,11 +76,18 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Thông tin không chính xác hoặc bạn không có trong danh sách thành viên.' }, { status: 403 });
         }
 
-        // --- TIME CHECK (LOCK until 14:30 29/12/2025) ---
+        // --- TIME CHECK (LOCK until 14:30 29/12/2025 and CLOSE at 18:00 30/12/2025) ---
+        // --- TIME CHECK (LOCK until 14:30 29/12/2025 and CLOSE at 18:00 30/12/2025) ---
+        // --- TIME CHECK (LOCK until 14:30 29/12/2025 and CLOSE at 18:01 30/12/2025) ---
         const openingTime = new Date('2025-12-29T14:30:00+07:00').getTime();
+        const closingTime = new Date('2025-12-30T18:01:00+07:00').getTime();
         const now = new Date().getTime();
+
         if (now < openingTime) {
             return NextResponse.json({ error: 'Cổng bán vé sẽ mở vào lúc 14:30 ngày 29/12/2025. Vui lòng quay lại sau!' }, { status: 403 });
+        }
+        if (now >= closingTime) {
+            return NextResponse.json({ error: 'Đã hết thời gian mua vé!' }, { status: 403 });
         }
         // ----------------------------------------------------
 

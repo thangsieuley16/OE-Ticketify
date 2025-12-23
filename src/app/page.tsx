@@ -16,8 +16,16 @@ export default function Home() {
   useEffect(() => {
     const checkTime = () => {
       const now = new Date().getTime();
-      const targetTime = new Date('2025-12-29T14:30:00+07:00').getTime();
-      setIsBookingOpen(now >= targetTime);
+      const openTime = new Date('2025-12-29T14:30:00+07:00').getTime();
+      const closeTime = new Date('2025-12-30T18:01:00+07:00').getTime();
+
+      const isOpen = now >= openTime && now < closeTime;
+      setIsBookingOpen(isOpen);
+
+      // Force sold out if past closing time (handled in combination with booking status check below)
+      if (now >= closeTime) {
+        setIsSoldOut(true);
+      }
     };
 
     checkTime(); // Check immediately
