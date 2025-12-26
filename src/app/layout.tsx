@@ -49,31 +49,6 @@ export const metadata: Metadata = {
   description: "Đêm tiệc vinh danh hoành tráng nhất thập kỷ của Ownego",
   applicationName: 'Owniverse 2025',
   metadataBase: new URL('https://owniverse25.ownego.com'),
-  /*
-    openGraph: {
-      title: "Owniverse 2025 - Year End Party",
-      description: "Đêm tiệc vinh danh hoành tráng nhất thập kỷ của Ownego",
-      url: 'https://owniverse25.ownego.com',
-      siteName: 'Owniverse 2025',
-      images: [
-        {
-          url: 'https://owniverse25.ownego.com/images/cover.png',
-          width: 1200,
-          height: 630,
-          alt: 'Owniverse 2025 Cover',
-          type: 'image/png',
-        },
-      ],
-      locale: 'vi_VN',
-      type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: "Owniverse 2025 - Year End Party",
-      description: "Đêm tiệc vinh danh hoành tráng nhất thập kỷ của Ownego",
-      images: ['/images/cover.png'],
-    },
-    */
   icons: {
     icon: '/images/ownego-icon.png',
     apple: '/images/ownego-icon.png',
