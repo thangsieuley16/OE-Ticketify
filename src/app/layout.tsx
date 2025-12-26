@@ -49,23 +49,31 @@ export const metadata: Metadata = {
   description: "Đêm tiệc vinh danh hoành tráng nhất thập kỷ của Ownego",
   applicationName: 'Owniverse 2025',
   metadataBase: new URL('https://owniverse25.ownego.com'),
-  openGraph: {
-    title: "Owniverse 2025 - Year End Party",
-    description: "Đêm tiệc vinh danh hoành tráng nhất thập kỷ của Ownego",
-    url: 'https://owniverse25.ownego.com',
-    siteName: 'Owniverse 2025',
-    images: [
-      {
-        url: 'https://owniverse25.ownego.com/images/cover.png',
-        width: 1200,
-        height: 630,
-        alt: 'Owniverse 2025 Cover',
-        type: 'image/png',
-      },
-    ],
-    locale: 'vi_VN',
-    type: 'website',
-  },
+  /*
+    openGraph: {
+      title: "Owniverse 2025 - Year End Party",
+      description: "Đêm tiệc vinh danh hoành tráng nhất thập kỷ của Ownego",
+      url: 'https://owniverse25.ownego.com',
+      siteName: 'Owniverse 2025',
+      images: [
+        {
+          url: 'https://owniverse25.ownego.com/images/cover.png',
+          width: 1200,
+          height: 630,
+          alt: 'Owniverse 2025 Cover',
+          type: 'image/png',
+        },
+      ],
+      locale: 'vi_VN',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: "Owniverse 2025 - Year End Party",
+      description: "Đêm tiệc vinh danh hoành tráng nhất thập kỷ của Ownego",
+      images: ['/images/cover.png'],
+    },
+    */
   icons: {
     icon: '/images/ownego-icon.png',
     apple: '/images/ownego-icon.png',
@@ -85,6 +93,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+        <meta property="og:title" content="Owniverse 2025 - Year End Party" />
+        <meta property="og:description" content="Đêm tiệc vinh danh hoành tráng nhất thập kỷ của Ownego" />
+        <meta property="og:image" content="https://owniverse25.ownego.com/images/cover.png" />
+        <meta property="og:url" content="https://owniverse25.ownego.com" />
+        <meta property="og:type" content="website" />
       </head>
       <body
         suppressHydrationWarning={true}
