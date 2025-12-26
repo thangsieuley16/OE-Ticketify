@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     siteName: 'Owniverse 2025',
     images: [
       {
-        url: '/images/cover.png',
+        url: 'https://owniverse25.ownego.com/images/cover.png',
         width: 1200,
         height: 630,
         alt: 'Owniverse 2025 Cover',
