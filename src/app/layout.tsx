@@ -47,8 +47,32 @@ const ibmPlexSans = IBM_Plex_Sans({
 export const metadata: Metadata = {
   title: "Owniverse 2025 - Year End Party",
   description: "Đêm tiệc vinh danh hoành tráng nhất thập kỷ của Ownego",
+  applicationName: 'Owniverse 2025',
+  metadataBase: new URL('https://owniverse25.ownego.com'),
+  openGraph: {
+    title: "Owniverse 2025 - Year End Party",
+    description: "Đêm tiệc vinh danh hoành tráng nhất thập kỷ của Ownego",
+    url: 'https://owniverse25.ownego.com',
+    siteName: 'Owniverse 2025',
+    images: [
+      {
+        url: '/images/cover.png',
+        width: 1200,
+        height: 630,
+        alt: 'Owniverse 2025 Cover',
+        type: 'image/png',
+      },
+    ],
+    locale: 'vi_VN',
+    type: 'website',
+  },
   icons: {
     icon: '/images/ownego-icon.png',
+    apple: '/images/ownego-icon.png',
+  },
+  appleWebApp: {
+    title: 'Owniverse 2025',
+    statusBarStyle: 'black-translucent',
   },
 };
 
