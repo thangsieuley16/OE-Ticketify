@@ -80,7 +80,7 @@ export async function POST(request: Request) {
         // --- TIME CHECK (LOCK until 14:30 29/12/2025 and CLOSE at 18:00 30/12/2025) ---
         // --- TIME CHECK (LOCK until 14:30 29/12/2025 and CLOSE at 18:01 30/12/2025) ---
         const openingTime = new Date('2025-12-29T14:30:00+07:00').getTime();
-        const closingTime = new Date('2025-12-30T18:01:00+07:00').getTime();
+        const closingTime = new Date('2025-12-30T18:00:00+07:00').getTime();
         const now = new Date().getTime();
 
         if (now < openingTime) {
@@ -123,7 +123,7 @@ export async function POST(request: Request) {
             const hasConflict = seats.some((seat: any) => allOccupiedSeatIds.has(seat.id));
 
             if (hasConflict) {
-                response = NextResponse.json({ error: 'Ghế này có người khác đặt ồi =))) bạn vui lòng đặt ghế khác nhaaa' }, { status: 409 });
+                response = NextResponse.json({ error: 'Ghế này vừa có người khác đặt ồi =))) bạn vui lòng đặt ghế khác nhaaa' }, { status: 409 });
                 return;
             }
 

@@ -16,12 +16,11 @@ export function QueueScreen({ onComplete }: QueueScreenProps) {
 
     useEffect(() => {
         // Initialize random count between 25 and 35
-        const initialCount = Math.floor(Math.random() * 11) + 39
+        const initialCount = Math.floor(Math.random() * 11) + 49
         setQueueCount(initialCount);
 
-        // Random target duration: 5s, 6s, or 7s
-        const possibleDurations = [5000, 6000, 7000];
-        const targetDuration = possibleDurations[Math.floor(Math.random() * possibleDurations.length)];
+        // Random target duration between 5000ms and 7000ms
+        const targetDuration = Math.floor(Math.random() * 2001) + 5000;
 
         // Estimate steps needed (avg decrease is 1.5)
         const estimatedSteps = initialCount / 1.5;

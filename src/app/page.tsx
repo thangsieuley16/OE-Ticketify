@@ -17,7 +17,7 @@ export default function Home() {
     const checkTime = () => {
       const now = new Date().getTime();
       const openTime = new Date('2025-12-29T14:30:00+07:00').getTime();
-      const closeTime = new Date('2025-12-30T18:01:00+07:00').getTime();
+      const closeTime = new Date('2025-12-30T18:00:00+07:00').getTime();
 
       const isOpen = now >= openTime && now < closeTime;
       setIsBookingOpen(isOpen);

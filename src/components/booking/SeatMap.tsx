@@ -367,7 +367,7 @@ export default function App() {
                                 Úi chà chà!
                             </h3>
                             <p className="text-stardust text-sm mb-6">
-                                Mỗi thành viên chỉ được pick 1 ghế thôi nha
+                                Bạn chỉ được đặt một ghế một lúc thôi!
                             </p>
                             <button
                                 onClick={() => setShowLimitModal(false)}

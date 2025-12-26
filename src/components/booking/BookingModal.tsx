@@ -186,7 +186,7 @@ export function BookingModal({ isOpen, onClose, isSoldOut }: BookingModalProps) 
                 } else {
                     setErrorData({
                         title: "CHẬM TAY MẤT RỒI!",
-                        message: 'Ghế này có người khác đặt ồi =))) bạn vui lòng đặt ghế khác nhaaa'
+                        message: 'Ghế này vừa có người khác đặt ồi =))) bạn vui lòng đặt ghế khác nhaaa'
                     });
                 }
             } else {
@@ -458,7 +458,7 @@ export function BookingModal({ isOpen, onClose, isSoldOut }: BookingModalProps) 
                             ÚI CHÀ CHÀ!
                         </h3>
                         <p className="text-gray-400 text-lg mb-8 font-sans">
-                            Mỗi thành viên chỉ được pick 1 ghế thôi nha
+                            Bạn chỉ được đặt một ghế một lúc thôi!
                         </p>
                         <button
                             onClick={() => setShowLimitModal(false)}
