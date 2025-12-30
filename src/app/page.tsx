@@ -12,6 +12,7 @@ export default function Home() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isSoldOut, setIsSoldOut] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const checkTime = () => {
@@ -45,15 +46,20 @@ export default function Home() {
           }
         });
         if (response.ok) {
-          const bookings = await response.json();
-          const totalBookedSeats = bookings.reduce((acc: number, booking: any) => {
-            return acc + (Array.isArray(booking.seats) ? booking.seats.length : 0);
-          }, 0);
+          const data = await response.json();
+          // Handle both direct array and wrapped response formats properly
+          const bookings = Array.isArray(data) ? data : (data.bookings || []);
 
-          if (totalBookedSeats >= 68) {
-            setIsSoldOut(true);
-          } else {
-            setIsSoldOut(false);
+          if (Array.isArray(bookings)) {
+            const totalBookedSeats = bookings.reduce((acc: number, booking: any) => {
+              return acc + (Array.isArray(booking.seats) ? booking.seats.length : 0);
+            }, 0);
+
+            if (totalBookedSeats >= 68) {
+              setIsSoldOut(true);
+            } else {
+              setIsSoldOut(false);
+            }
           }
         }
       } catch (error) {
@@ -61,7 +67,7 @@ export default function Home() {
       }
     };
 
-    checkSoldOut();
+    checkSoldOut().finally(() => setIsLoading(false));
   }, []);
 
   const openBooking = () => setIsBookingModalOpen(true);
@@ -70,7 +76,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black relative">
       <StardustBackground />
-      <Hero onBookTicket={openBooking} isSoldOut={isSoldOut} isBookingOpen={isBookingOpen} />
+      <Hero onBookTicket={openBooking} isSoldOut={isSoldOut} isBookingOpen={isBookingOpen} isLoading={isLoading} />
       <AboutEvent />
       <AboutSchedule />
       <TicketClasses onBookTicket={openBooking} isSoldOut={isSoldOut} isBookingOpen={isBookingOpen} />

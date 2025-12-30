@@ -60,7 +60,7 @@ export function SeatMap({ onSelectionChange, onLimitReached }: SeatMapProps) {
         { id: 'CAT6A', label: 'CAT 6A', count: 6, type: 'STANDARD', price: 20 },
         { id: 'CAT5A', label: 'CAT 5A', count: 6, type: 'STANDARD', price: 20 },
         { id: 'CAT4A', label: 'CAT 4A', count: 6, type: 'STANDARD', price: 20 },
-        { id: 'CAT1', label: 'CAT 1', count: 6, type: 'STANDARD', price: 20 },
+        { id: 'CAT1', label: 'CAT 1', count: 7, type: 'STANDARD', price: 20 },
         { id: 'CAT4B', label: 'CAT 4B', count: 6, type: 'STANDARD', price: 20 },
         { id: 'CAT5B', label: 'CAT 5B', count: 6, type: 'STANDARD', price: 20 },
         { id: 'CAT6B', label: 'CAT 6B', count: 6, type: 'STANDARD', price: 20 },
@@ -92,15 +92,19 @@ export function SeatMap({ onSelectionChange, onLimitReached }: SeatMapProps) {
             try {
                 const response = await fetch('/api/bookings');
                 if (response.ok) {
-                    const bookings = await response.json();
-                    const occupiedSeatIds = new Set(bookings.flatMap((b: any) => b.seats.map((s: any) => s.id)));
+                    const data = await response.json();
+                    const bookings = Array.isArray(data) ? data : (data.bookings || []);
 
-                    setSeats(prevSeats => prevSeats.map(seat => {
-                        if (occupiedSeatIds.has(seat.id)) {
-                            return { ...seat, status: 'occupied' };
-                        }
-                        return seat;
-                    }));
+                    if (Array.isArray(bookings)) {
+                        const occupiedSeatIds = new Set(bookings.flatMap((b: any) => Array.isArray(b.seats) ? b.seats.map((s: any) => s.id) : []));
+
+                        setSeats(prevSeats => prevSeats.map(seat => {
+                            if (occupiedSeatIds.has(seat.id)) {
+                                return { ...seat, status: 'occupied' };
+                            }
+                            return seat;
+                        }));
+                    }
                 }
             } catch (error) {
                 console.error('Failed to fetch bookings:', error);

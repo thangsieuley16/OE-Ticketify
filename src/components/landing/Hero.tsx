@@ -8,9 +8,10 @@ interface HeroProps {
     onBookTicket: () => void;
     isSoldOut: boolean;
     isBookingOpen: boolean;
+    isLoading: boolean;
 }
 
-export function Hero({ onBookTicket, isSoldOut, isBookingOpen }: HeroProps) {
+export function Hero({ onBookTicket, isSoldOut, isBookingOpen, isLoading }: HeroProps) {
     const router = useRouter();
     const [timeLeft, setTimeLeft] = useState('');
 
@@ -44,7 +45,10 @@ export function Hero({ onBookTicket, isSoldOut, isBookingOpen }: HeroProps) {
     }, []);
 
     const handleButtonClick = () => {
-        if (isSoldOut) return;
+        if (isSoldOut) {
+            router.push('/seatmaps');
+            return;
+        }
         if (isBookingOpen) {
             onBookTicket();
         }
@@ -227,27 +231,35 @@ export function Hero({ onBookTicket, isSoldOut, isBookingOpen }: HeroProps) {
                             >
                                 LỊCH TRÌNH
                             </Button>
-                            <Button
-                                onClick={handleButtonClick}
-                                disabled={isSoldOut}
-                                variant="secondary"
-                                className={`group btn-shiny font-bold py-4 px-12 rounded-full text-xl tracking-widest transition-transform duration-300 border-none font-display min-w-[280px] ${isSoldOut
-                                    ? 'bg-gray-600 text-white cursor-not-allowed opacity-50 shadow-none pointer-events-none'
-                                    : (isBookingOpen
+                            {isLoading ? (
+                                <div className="bg-gray-800/50 backdrop-blur-md h-[60px] w-full max-w-[280px] rounded-full animate-pulse border border-white/10"></div>
+                            ) : isSoldOut ? (
+                                <Button
+                                    onClick={handleButtonClick}
+                                    disabled={false}
+                                    variant="secondary"
+                                    className="group btn-shiny font-bold py-4 px-12 rounded-full text-xl tracking-widest transition-transform duration-300 border-none font-display min-w-[280px] bg-gray-600 text-white shadow-none hover:bg-gray-500 hover:scale-105 cursor-pointer"
+                                >
+                                    SOLD OUT
+                                </Button>
+                            ) : (
+                                <Button
+                                    onClick={handleButtonClick}
+                                    disabled={false}
+                                    variant="secondary"
+                                    className={`group btn-shiny font-bold py-4 px-12 rounded-full text-xl tracking-widest transition-transform duration-300 border-none font-display min-w-[280px] ${isBookingOpen
                                         ? '!bg-gradient-to-r from-cosmic-cyan to-cosmic-purple !text-white shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 cursor-pointer'
                                         : '!bg-black !border-2 !border-cosmic-cyan !text-white shadow-[0_0_20px_rgba(6,182,212,0.4)] backdrop-blur-md hover:!bg-white hover:!text-black hover:!shadow-[0_0_30px_rgba(255,255,255,0.6)] hover:!scale-105 cursor-pointer'
-                                    )
-                                    }`}
-                            >
-                                {isSoldOut ? 'SOLD OUT' : (
-                                    isBookingOpen ? 'ĐẶT VÉ NGAY' : (
+                                        }`}
+                                >
+                                    {isBookingOpen ? 'ĐẶT VÉ NGAY' : (
                                         <>
                                             <span className="whitespace-nowrap drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] block group-hover:hidden">{timeLeft}</span>
                                             <span className="whitespace-nowrap text-black hidden group-hover:block">14:30 - 29/12</span>
                                         </>
-                                    )
-                                )}
-                            </Button>
+                                    )}
+                                </Button>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -261,30 +273,38 @@ export function Hero({ onBookTicket, isSoldOut, isBookingOpen }: HeroProps) {
                         >
                             LỊCH TRÌNH
                         </Button>
-                        <Button
-                            onClick={handleButtonClick}
-                            disabled={isSoldOut}
-                            variant="secondary"
-                            className={`group flex-1 btn-shiny font-bold py-4 rounded-full text-lg tracking-widest transition-transform duration-300 border-none min-w-[200px] ${isSoldOut
-                                ? 'bg-gray-600 text-white cursor-not-allowed opacity-50 shadow-none pointer-events-none'
-                                : (isBookingOpen
+                        {isLoading ? (
+                            <div className="bg-gray-800/50 backdrop-blur-md h-[60px] w-full max-w-[200px] rounded-full animate-pulse border border-white/10 flex-1"></div>
+                        ) : isSoldOut ? (
+                            <Button
+                                onClick={handleButtonClick}
+                                disabled={false}
+                                variant="secondary"
+                                className="group flex-1 btn-shiny font-bold py-4 rounded-full text-lg tracking-widest transition-transform duration-300 border-none min-w-[200px] bg-gray-600 text-white shadow-none hover:bg-gray-500 hover:scale-105 cursor-pointer"
+                            >
+                                SOLD OUT
+                            </Button>
+                        ) : (
+                            <Button
+                                onClick={handleButtonClick}
+                                disabled={false}
+                                variant="secondary"
+                                className={`group flex-1 btn-shiny font-bold py-4 rounded-full text-lg tracking-widest transition-transform duration-300 border-none min-w-[200px] ${isBookingOpen
                                     ? '!bg-gradient-to-r from-cosmic-cyan to-cosmic-purple !text-white shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 cursor-pointer'
                                     : '!bg-black !border-2 !border-cosmic-cyan !text-white shadow-[0_0_20px_rgba(6,182,212,0.4)] backdrop-blur-md hover:!bg-white hover:!text-black hover:!shadow-[0_0_30px_rgba(255,255,255,0.6)] hover:!scale-105 cursor-pointer'
-                                )
-                                }`}
-                        >
-                            {isSoldOut ? 'SOLD OUT' : (
-                                isBookingOpen ? 'ĐẶT VÉ NGAY' : (
+                                    }`}
+                            >
+                                {isBookingOpen ? 'ĐẶT VÉ NGAY' : (
                                     <>
                                         <span className="whitespace-nowrap drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] block group-hover:hidden">{timeLeft}</span>
                                         <span className="whitespace-nowrap text-black hidden group-hover:block">14:30 - 29/12</span>
                                     </>
-                                )
-                            )}
-                        </Button>
+                                )}
+                            </Button>
+                        )}
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }

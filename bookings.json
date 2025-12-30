@@ -1,0 +1,1393 @@
+[
+  {
+    "id": "1766993421601",
+    "date": "2025-12-29T07:30:21.601Z",
+    "user": {
+      "name": "Trần Hà Nhi",
+      "employeeId": "nhith",
+      "phoneNumber": "0812020803"
+    },
+    "seats": [
+      {
+        "id": "CAT2A.02",
+        "row": "CAT 2A",
+        "col": 2,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent",
+    "isEarlyBird": true
+  },
+  {
+    "id": "1766993918261",
+    "date": "2025-12-29T07:38:38.261Z",
+    "user": {
+      "name": "Nguyễn Thị Hoài Thương",
+      "employeeId": "thuongnth",
+      "phoneNumber": "0325808484"
+    },
+    "seats": [
+      {
+        "id": "CAT2B.04",
+        "row": "CAT 2B",
+        "col": 4,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent",
+    "isEarlyBird": true
+  },
+  {
+    "id": "1766993919147",
+    "date": "2025-12-29T07:38:39.147Z",
+    "user": {
+      "name": "Phạm Thị Minh Châu",
+      "employeeId": "chauptm",
+      "phoneNumber": "0379032830"
+    },
+    "seats": [
+      {
+        "id": "CAT5A.03",
+        "row": "CAT 5A",
+        "col": 3,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent",
+    "isEarlyBird": true
+  },
+  {
+    "id": "1766993922545",
+    "date": "2025-12-29T07:38:42.545Z",
+    "user": {
+      "name": "Trần Quỳnh Phương",
+      "employeeId": "phuongtq",
+      "phoneNumber": "0826336828"
+    },
+    "seats": [
+      {
+        "id": "CAT2B.01",
+        "row": "CAT 2B",
+        "col": 1,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent",
+    "isEarlyBird": true
+  },
+  {
+    "id": "1766993924500",
+    "date": "2025-12-29T07:38:44.500Z",
+    "user": {
+      "name": "Phạm Hoàng Lan",
+      "employeeId": "lanph",
+      "phoneNumber": "0382645837"
+    },
+    "seats": [
+      {
+        "id": "CAT2B.06",
+        "row": "CAT 2B",
+        "col": 6,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent",
+    "isEarlyBird": true
+  },
+  {
+    "id": "1766993931943",
+    "date": "2025-12-29T07:38:51.943Z",
+    "user": {
+      "name": "Phạm Thị Hạnh",
+      "employeeId": "hanhpt",
+      "phoneNumber": "0389853737"
+    },
+    "seats": [
+      {
+        "id": "CAT1.04",
+        "row": "CAT 1",
+        "col": 4,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent",
+    "isEarlyBird": true
+  },
+  {
+    "id": "1766993933458",
+    "date": "2025-12-29T07:38:53.458Z",
+    "user": {
+      "name": "Nguyễn Huỳnh Cẩm Tiên",
+      "employeeId": "tiennhc",
+      "phoneNumber": "0342434411"
+    },
+    "seats": [
+      {
+        "id": "CAT2B.07",
+        "row": "CAT 2B",
+        "col": 7,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent",
+    "isEarlyBird": true
+  },
+  {
+    "id": "1766993936302",
+    "date": "2025-12-29T07:38:56.302Z",
+    "user": {
+      "name": "Nguyễn Việt Hoàng",
+      "employeeId": "hoangnv",
+      "phoneNumber": "0865389425"
+    },
+    "seats": [
+      {
+        "id": "CAT2A.07",
+        "row": "CAT 2A",
+        "col": 7,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent",
+    "isEarlyBird": true
+  },
+  {
+    "id": "1766993936705",
+    "date": "2025-12-29T07:38:56.705Z",
+    "user": {
+      "name": "Vũ Anh Tuấn",
+      "employeeId": "tuanva",
+      "phoneNumber": "0902572001"
+    },
+    "seats": [
+      {
+        "id": "CAT5A.02",
+        "row": "CAT 5A",
+        "col": 2,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent",
+    "isEarlyBird": true
+  },
+  {
+    "id": "1766993937019",
+    "date": "2025-12-29T07:38:57.019Z",
+    "user": {
+      "name": "Phạm Thị Phương Thảo",
+      "employeeId": "thaoptp",
+      "phoneNumber": "0982081597"
+    },
+    "seats": [
+      {
+        "id": "CAT2A.05",
+        "row": "CAT 2A",
+        "col": 5,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent",
+    "isEarlyBird": true
+  },
+  {
+    "id": "1766993937411",
+    "date": "2025-12-29T07:38:57.411Z",
+    "user": {
+      "name": "Nguyễn Kim Ngân",
+      "employeeId": "ngannk",
+      "phoneNumber": "0905073909"
+    },
+    "seats": [
+      {
+        "id": "CAT2A.06",
+        "row": "CAT 2A",
+        "col": 6,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993938847",
+    "date": "2025-12-29T07:38:58.847Z",
+    "user": {
+      "name": "Nguyễn Thị Nga",
+      "employeeId": "ngant",
+      "phoneNumber": "0393044280"
+    },
+    "seats": [
+      {
+        "id": "CAT2B.03",
+        "row": "CAT 2B",
+        "col": 3,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent",
+    "isEarlyBird": false
+  },
+  {
+    "id": "1766993940281",
+    "date": "2025-12-29T07:39:00.281Z",
+    "user": {
+      "name": "Trần Thị Vân Anh",
+      "employeeId": "anhttv",
+      "phoneNumber": "0962910562"
+    },
+    "seats": [
+      {
+        "id": "CAT2A.04",
+        "row": "CAT 2A",
+        "col": 4,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993941079",
+    "date": "2025-12-29T07:39:01.079Z",
+    "user": {
+      "name": "Nguyễn Hải Yến",
+      "employeeId": "yennh",
+      "phoneNumber": "0985427108"
+    },
+    "seats": [
+      {
+        "id": "CAT1.02",
+        "row": "CAT 1",
+        "col": 2,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993942135",
+    "date": "2025-12-29T07:39:02.135Z",
+    "user": {
+      "name": "Cấn Thị Chiến",
+      "employeeId": "chienct",
+      "phoneNumber": "0978849389"
+    },
+    "seats": [
+      {
+        "id": "CAT4B.04",
+        "row": "CAT 4B",
+        "col": 4,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993943365",
+    "date": "2025-12-29T07:39:03.365Z",
+    "user": {
+      "name": "Mai Công Chuyên",
+      "employeeId": "chuyenmc",
+      "phoneNumber": "0349982248"
+    },
+    "seats": [
+      {
+        "id": "CAT3A.06",
+        "row": "CAT 3A",
+        "col": 6,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993946531",
+    "date": "2025-12-29T07:39:06.531Z",
+    "user": {
+      "name": "Võ Nguyễn Xuân Anh",
+      "employeeId": "anhvnx",
+      "phoneNumber": "0946750597"
+    },
+    "seats": [
+      {
+        "id": "CAT5A.05",
+        "row": "CAT 5A",
+        "col": 5,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993946835",
+    "date": "2025-12-29T07:39:06.835Z",
+    "user": {
+      "name": "Trần Huỳnh Lan",
+      "employeeId": "lanth",
+      "phoneNumber": "0795086509"
+    },
+    "seats": [
+      {
+        "id": "CAT2B.05",
+        "row": "CAT 2B",
+        "col": 5,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993947041",
+    "date": "2025-12-29T07:39:07.045Z",
+    "user": {
+      "name": "Hoàng Mai Diệp Linh",
+      "employeeId": "linhhmd",
+      "phoneNumber": "0347084012"
+    },
+    "seats": [
+      {
+        "id": "CAT2B.02",
+        "row": "CAT 2B",
+        "col": 2,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993948444",
+    "date": "2025-12-29T07:39:08.444Z",
+    "user": {
+      "name": "Phạm Yến Phượng",
+      "employeeId": "phuongpy",
+      "phoneNumber": "0384471067"
+    },
+    "seats": [
+      {
+        "id": "CAT2A.03",
+        "row": "CAT 2A",
+        "col": 3,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993951990",
+    "date": "2025-12-29T07:39:11.990Z",
+    "user": {
+      "name": "Nguyễn Thị Khánh Huyền",
+      "employeeId": "huyenntk",
+      "phoneNumber": "0967367658"
+    },
+    "seats": [
+      {
+        "id": "CAT5A.04",
+        "row": "CAT 5A",
+        "col": 4,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993953382",
+    "date": "2025-12-29T07:39:13.382Z",
+    "user": {
+      "name": "Vũ Thị Hảo",
+      "employeeId": "haovt",
+      "phoneNumber": "0962540013"
+    },
+    "seats": [
+      {
+        "id": "CAT2A.01",
+        "row": "CAT 2A",
+        "col": 1,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993954250",
+    "date": "2025-12-29T07:39:14.250Z",
+    "user": {
+      "name": "Nguyễn Viết Minh",
+      "employeeId": "minhnv",
+      "phoneNumber": "0386900087"
+    },
+    "seats": [
+      {
+        "id": "CAT3B.04",
+        "row": "CAT 3B",
+        "col": 4,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993956602",
+    "date": "2025-12-29T07:39:16.602Z",
+    "user": {
+      "name": "Nguyễn Thảo Hiền",
+      "employeeId": " hiennt",
+      "phoneNumber": " 0372531872"
+    },
+    "seats": [
+      {
+        "id": "CAT6B.05",
+        "row": "CAT 6B",
+        "col": 5,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993959365",
+    "date": "2025-12-29T07:39:19.365Z",
+    "user": {
+      "name": "Nguyễn Thị Hà Giang",
+      "employeeId": "GiangNTH",
+      "phoneNumber": "0397358744"
+    },
+    "seats": [
+      {
+        "id": "CAT5A.06",
+        "row": "CAT 5A",
+        "col": 6,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993964894",
+    "date": "2025-12-29T07:39:24.894Z",
+    "user": {
+      "name": "Phạm Phương Thảo",
+      "employeeId": "thaopp",
+      "phoneNumber": "0389101999"
+    },
+    "seats": [
+      {
+        "id": "CAT1.03",
+        "row": "CAT 1",
+        "col": 3,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993967289",
+    "date": "2025-12-29T07:39:27.289Z",
+    "user": {
+      "name": "Lê Thị Trung Thu",
+      "employeeId": "thultt",
+      "phoneNumber": "0963856560"
+    },
+    "seats": [
+      {
+        "id": "CAT3A.03",
+        "row": "CAT 3A",
+        "col": 3,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993968260",
+    "date": "2025-12-29T07:39:28.260Z",
+    "user": {
+      "name": "Nguyễn Thị Lan Anh",
+      "employeeId": "lananh.nt",
+      "phoneNumber": "0387132428"
+    },
+    "seats": [
+      {
+        "id": "CAT6B.04",
+        "row": "CAT 6B",
+        "col": 4,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993975860",
+    "date": "2025-12-29T07:39:35.860Z",
+    "user": {
+      "name": "Đỗ Hồng Trang",
+      "employeeId": "trangdh",
+      "phoneNumber": "0989882829"
+    },
+    "seats": [
+      {
+        "id": "CAT3A.02",
+        "row": "CAT 3A",
+        "col": 2,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993976034",
+    "date": "2025-12-29T07:39:36.034Z",
+    "user": {
+      "name": "Hoàng Vũ Gia Thịnh",
+      "employeeId": "thinhhvg ",
+      "phoneNumber": "0342777278"
+    },
+    "seats": [
+      {
+        "id": "CAT3A.01",
+        "row": "CAT 3A",
+        "col": 1,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993976304",
+    "date": "2025-12-29T07:39:36.304Z",
+    "user": {
+      "name": "Nguyễn Kiều Trang",
+      "employeeId": "ktrang",
+      "phoneNumber": "0354715566"
+    },
+    "seats": [
+      {
+        "id": "CAT1.01",
+        "row": "CAT 1",
+        "col": 1,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993979008",
+    "date": "2025-12-29T07:39:39.008Z",
+    "user": {
+      "name": "Nguyễn Thế Đạt",
+      "employeeId": "datnt",
+      "phoneNumber": "0376789087"
+    },
+    "seats": [
+      {
+        "id": "CAT3A.05",
+        "row": "CAT 3A",
+        "col": 5,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993995898",
+    "date": "2025-12-29T07:39:55.898Z",
+    "user": {
+      "name": "Phạm Hà Mi",
+      "employeeId": "miph",
+      "phoneNumber": "0974495903"
+    },
+    "seats": [
+      {
+        "id": "CAT1.05",
+        "row": "CAT 1",
+        "col": 5,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993996814",
+    "date": "2025-12-29T07:39:56.814Z",
+    "user": {
+      "name": "Hoàng Quốc Cường",
+      "employeeId": "cuonghq",
+      "phoneNumber": "0988747836"
+    },
+    "seats": [
+      {
+        "id": "CAT4A.01",
+        "row": "CAT 4A",
+        "col": 1,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766993998170",
+    "date": "2025-12-29T07:39:58.170Z",
+    "user": {
+      "name": "Phạm trung kiên",
+      "employeeId": "kienpt",
+      "phoneNumber": "0365869993"
+    },
+    "seats": [
+      {
+        "id": "CAT1.06",
+        "row": "CAT 1",
+        "col": 6,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994002237",
+    "date": "2025-12-29T07:40:02.237Z",
+    "user": {
+      "name": "Nguyễn Quỳnh Anh",
+      "employeeId": "anh.nq",
+      "phoneNumber": "0969929966"
+    },
+    "seats": [
+      {
+        "id": "CAT5A.01",
+        "row": "CAT 5A",
+        "col": 1,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994004645",
+    "date": "2025-12-29T07:40:04.645Z",
+    "user": {
+      "name": "Bùi Bích Phương",
+      "employeeId": "phuongbb",
+      "phoneNumber": "0347999657"
+    },
+    "seats": [
+      {
+        "id": "CAT3B.05",
+        "row": "CAT 3B",
+        "col": 5,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994005934",
+    "date": "2025-12-29T07:40:05.934Z",
+    "user": {
+      "name": "Lê Đức Hải",
+      "employeeId": "haild",
+      "phoneNumber": "0968575735"
+    },
+    "seats": [
+      {
+        "id": "CAT4A.06",
+        "row": "CAT 4A",
+        "col": 6,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994012791",
+    "date": "2025-12-29T07:40:12.791Z",
+    "user": {
+      "name": "sú mỹ linh",
+      "employeeId": "linhsu",
+      "phoneNumber": "0763619299"
+    },
+    "seats": [
+      {
+        "id": "CAT3A.04",
+        "row": "CAT 3A",
+        "col": 4,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994018377",
+    "date": "2025-12-29T07:40:18.377Z",
+    "user": {
+      "name": "Mai Thảo Vân",
+      "employeeId": "vanmt",
+      "phoneNumber": "0328315529"
+    },
+    "seats": [
+      {
+        "id": "CAT4B.03",
+        "row": "CAT 4B",
+        "col": 3,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994031055",
+    "date": "2025-12-29T07:40:31.055Z",
+    "user": {
+      "name": "Tạ Thị Hường",
+      "employeeId": "huongtt",
+      "phoneNumber": "0353572111"
+    },
+    "seats": [
+      {
+        "id": "CAT4A.04",
+        "row": "CAT 4A",
+        "col": 4,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994034368",
+    "date": "2025-12-29T07:40:34.368Z",
+    "user": {
+      "name": "Nguyễn Hoàng Sơn",
+      "employeeId": "sonnh",
+      "phoneNumber": "0968681901"
+    },
+    "seats": [
+      {
+        "id": "CAT5B.04",
+        "row": "CAT 5B",
+        "col": 4,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994040499",
+    "date": "2025-12-29T07:40:40.499Z",
+    "user": {
+      "name": "Lưu Đức Tùng",
+      "employeeId": "tungld",
+      "phoneNumber": "0326565320"
+    },
+    "seats": [
+      {
+        "id": "CAT6B.06",
+        "row": "CAT 6B",
+        "col": 6,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994045777",
+    "date": "2025-12-29T07:40:45.777Z",
+    "user": {
+      "name": "Phạm Thị Thu Hà",
+      "employeeId": "ha.ptt",
+      "phoneNumber": "0335043373"
+    },
+    "seats": [
+      {
+        "id": "CAT4A.05",
+        "row": "CAT 4A",
+        "col": 5,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994046601",
+    "date": "2025-12-29T07:40:46.601Z",
+    "user": {
+      "name": "Trần Văn Huy",
+      "employeeId": "HuyTV",
+      "phoneNumber": "0835901997"
+    },
+    "seats": [
+      {
+        "id": "CAT4B.05",
+        "row": "CAT 4B",
+        "col": 5,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994053742",
+    "date": "2025-12-29T07:40:53.742Z",
+    "user": {
+      "name": "Lâm Đức Trung",
+      "employeeId": "trungld",
+      "phoneNumber": "0347604472"
+    },
+    "seats": [
+      {
+        "id": "CAT5B.05",
+        "row": "CAT 5B",
+        "col": 5,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994054322",
+    "date": "2025-12-29T07:40:54.322Z",
+    "user": {
+      "name": "Đinh Thọ Chỉnh",
+      "employeeId": "chinhdt ",
+      "phoneNumber": "0973710964"
+    },
+    "seats": [
+      {
+        "id": "CAT3B.06",
+        "row": "CAT 3B",
+        "col": 6,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994075547",
+    "date": "2025-12-29T07:41:15.547Z",
+    "user": {
+      "name": "Ma Trung Kiên",
+      "employeeId": "kien.ma",
+      "phoneNumber": "0356562023"
+    },
+    "seats": [
+      {
+        "id": "CAT4A.03",
+        "row": "CAT 4A",
+        "col": 3,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994075621",
+    "date": "2025-12-29T07:41:15.621Z",
+    "user": {
+      "name": "Nguyễn Hữu Thắng",
+      "employeeId": "huuthang",
+      "phoneNumber": "0377499804"
+    },
+    "seats": [
+      {
+        "id": "CAT6B.01",
+        "row": "CAT 6B",
+        "col": 1,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994212900",
+    "date": "2025-12-29T07:43:32.900Z",
+    "user": {
+      "name": "Phạm Chung Đức",
+      "employeeId": "ducpc",
+      "phoneNumber": "0522485184"
+    },
+    "seats": [
+      {
+        "id": "CAT6A.06",
+        "row": "CAT 6A",
+        "col": 6,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994283718",
+    "date": "2025-12-29T07:44:43.718Z",
+    "user": {
+      "name": "Nguyễn Huyền Trang",
+      "employeeId": "trang.ngnx",
+      "phoneNumber": "0395137312"
+    },
+    "seats": [
+      {
+        "id": "CAT3B.01",
+        "row": "CAT 3B",
+        "col": 1,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994455602",
+    "date": "2025-12-29T07:47:35.602Z",
+    "user": {
+      "name": "Ong Thế Tùng",
+      "employeeId": "tungot",
+      "phoneNumber": "0328493872"
+    },
+    "seats": [
+      {
+        "id": "CAT4B.01",
+        "row": "CAT 4B",
+        "col": 1,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994782922",
+    "date": "2025-12-29T07:53:02.922Z",
+    "user": {
+      "name": "Nông Thùy Linh",
+      "employeeId": "linhnt",
+      "phoneNumber": "0987204607"
+    },
+    "seats": [
+      {
+        "id": "CAT4A.02",
+        "row": "CAT 4A",
+        "col": 2,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994885325",
+    "date": "2025-12-29T07:54:45.325Z",
+    "user": {
+      "name": "Lưu Thị Huệ",
+      "employeeId": "huelt",
+      "phoneNumber": "0961059214"
+    },
+    "seats": [
+      {
+        "id": "CAT6A.05",
+        "row": "CAT 6A",
+        "col": 5,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766994904936",
+    "date": "2025-12-29T07:55:04.936Z",
+    "user": {
+      "name": "Lê Xuân Giao",
+      "employeeId": "giaolx",
+      "phoneNumber": "0192730584"
+    },
+    "seats": [
+      {
+        "id": "CAT3B.03",
+        "row": "CAT 3B",
+        "col": 3,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766995161709",
+    "date": "2025-12-29T07:59:21.709Z",
+    "user": {
+      "name": "Phạm Kiều Trinh",
+      "employeeId": "trinhpk",
+      "phoneNumber": "0962346323"
+    },
+    "seats": [
+      {
+        "id": "CAT3B.02",
+        "row": "CAT 3B",
+        "col": 2,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766995397898",
+    "date": "2025-12-29T08:03:17.898Z",
+    "user": {
+      "name": "Nguyễn Thị Tình",
+      "employeeId": "tinhnt",
+      "phoneNumber": "0985825510"
+    },
+    "seats": [
+      {
+        "id": "CAT4B.02",
+        "row": "CAT 4B",
+        "col": 2,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766995471878",
+    "date": "2025-12-29T08:04:31.878Z",
+    "user": {
+      "name": "Phạm Mai Anh",
+      "employeeId": "mai.anh",
+      "phoneNumber": "0914430247"
+    },
+    "seats": [
+      {
+        "id": "CAT6A.01",
+        "row": "CAT 6A",
+        "col": 1,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766995517113",
+    "date": "2025-12-29T08:05:17.113Z",
+    "user": {
+      "name": "Nguyễn Diệu Linh",
+      "employeeId": "linhnd",
+      "phoneNumber": "0366868698"
+    },
+    "seats": [
+      {
+        "id": "CAT6A.04",
+        "row": "CAT 6A",
+        "col": 4,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766995798787",
+    "date": "2025-12-29T08:09:58.787Z",
+    "user": {
+      "name": "Ngô Quốc Huy",
+      "employeeId": "huynq",
+      "phoneNumber": "0943551795"
+    },
+    "seats": [
+      {
+        "id": "CAT4B.06",
+        "row": "CAT 4B",
+        "col": 6,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766996105481",
+    "date": "2025-12-29T08:15:05.481Z",
+    "user": {
+      "name": "Lê Thị Thanh Tâm",
+      "employeeId": "tamltt",
+      "phoneNumber": "0976818993"
+    },
+    "seats": [
+      {
+        "id": "CAT5B.06",
+        "row": "CAT 5B",
+        "col": 6,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1766997946666",
+    "date": "2025-12-29T08:45:46.666Z",
+    "user": {
+      "name": "Nguyễn Thị Thu Trang",
+      "employeeId": "trangntt",
+      "phoneNumber": "0976514703"
+    },
+    "seats": [
+      {
+        "id": "CAT5B.01",
+        "row": "CAT 5B",
+        "col": 1,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1767003092074",
+    "date": "2025-12-29T10:11:32.074Z",
+    "user": {
+      "name": "Nguyễn Văn Chiến",
+      "employeeId": "chiennv",
+      "phoneNumber": "0353210133"
+    },
+    "seats": [
+      {
+        "id": "CAT6A.03",
+        "row": "CAT 6A",
+        "col": 3,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1767005489884",
+    "date": "2025-12-29T10:51:29.884Z",
+    "user": {
+      "name": "Nguyễn Tiến Minh",
+      "employeeId": "mihnsen",
+      "phoneNumber": "0911556248"
+    },
+    "seats": [
+      {
+        "id": "CAT6B.03",
+        "row": "CAT 6B",
+        "col": 3,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1767006217550",
+    "date": "2025-12-29T11:03:37.550Z",
+    "user": {
+      "name": "Phan Trọng Tình",
+      "employeeId": "tinhpt",
+      "phoneNumber": "0399579720"
+    },
+    "seats": [
+      {
+        "id": "CAT5B.03",
+        "row": "CAT 5B",
+        "col": 3,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1767006380540",
+    "date": "2025-12-29T11:06:20.540Z",
+    "user": {
+      "name": "Phạm Thị Linh",
+      "employeeId": "Linhpham",
+      "phoneNumber": "0385311151"
+    },
+    "seats": [
+      {
+        "id": "CAT5B.02",
+        "row": "CAT 5B",
+        "col": 2,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1767014137233",
+    "date": "2025-12-29T13:15:37.233Z",
+    "user": {
+      "name": "Trần Minh Quân",
+      "employeeId": "quantm",
+      "phoneNumber": "0374098478"
+    },
+    "seats": [
+      {
+        "id": "CAT6A.02",
+        "row": "CAT 6A",
+        "col": 2,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1767018107709",
+    "date": "2025-12-29T14:21:47.709Z",
+    "user": {
+      "name": "Ngô Tấn Phát",
+      "employeeId": "phatnt",
+      "phoneNumber": "0832932980"
+    },
+    "seats": [
+      {
+        "id": "CAT6B.02",
+        "row": "CAT 6B",
+        "col": 2,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  },
+  {
+    "id": "1767068264893",
+    "date": "2025-12-30T04:17:44.893Z",
+    "user": {
+      "name": "Nguyễn Cao Thắng",
+      "employeeId": "thangnc",
+      "phoneNumber": "0914356119"
+    },
+    "seats": [
+      {
+        "id": "CAT1.07",
+        "row": "CAT 1",
+        "col": 7,
+        "type": "STANDARD",
+        "price": 0,
+        "status": "selected"
+      }
+    ],
+    "chatStatus": "sent"
+  }
+]

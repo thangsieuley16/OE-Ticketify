@@ -13,7 +13,15 @@ function getBookings() {
     }
     const fileContent = fs.readFileSync(DATA_FILE_PATH, 'utf-8');
     try {
-        return JSON.parse(fileContent);
+        const data = JSON.parse(fileContent);
+        if (Array.isArray(data)) {
+            return data;
+        } else if (typeof data === 'object' && data !== null) {
+            // Auto-fix: Wrap single object in array if it looks like a booking
+            // (Assuming it's a valid object, we treat it as a single entry to not lose data)
+            return [data];
+        }
+        return [];
     } catch (error) {
         return [];
     }

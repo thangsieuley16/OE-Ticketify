@@ -1,6 +1,4 @@
-import { Button } from '@/components/ui/Button';
-
-
+import { useRouter } from 'next/navigation';
 
 interface TicketClassesProps {
     onBookTicket: () => void;
@@ -9,6 +7,8 @@ interface TicketClassesProps {
 }
 
 export function TicketClasses({ onBookTicket, isSoldOut, isBookingOpen }: TicketClassesProps) {
+    const router = useRouter();
+
     return (
         <section className="container mx-auto px-4 pt-32 pb-24 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -71,7 +71,15 @@ export function TicketClasses({ onBookTicket, isSoldOut, isBookingOpen }: Ticket
                                     </div>
                                     <div className={`flex items-center justify-end gap-2 ${isSoldOut || !isBookingOpen ? '' : 'text-xs font-bold uppercase tracking-widest animate-pulse text-cosmic-cyan'}`}>
                                         {isSoldOut ? (
-                                            <div className="text-white font-bold text-xs uppercase tracking-widest border border-white/20 bg-white/5 px-3 py-1 rounded-full inline-block font-display">Sold Out</div>
+                                            <div
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    router.push('/seatmaps');
+                                                }}
+                                                className="text-white font-bold text-xs uppercase tracking-widest border border-white/20 bg-white/5 px-3 py-1 rounded-full inline-block font-display cursor-pointer hover:scale-110 hover:bg-white/10 hover:border-white/40 transition-all duration-300 relative z-50 pointer-events-auto"
+                                            >
+                                                Sold Out
+                                            </div>
                                         ) : (
                                             <>
                                                 <span className={`w-2 h-2 rounded-full bg-cosmic-cyan inline-block ${!isBookingOpen ? 'opacity-50' : ''}`}></span>
